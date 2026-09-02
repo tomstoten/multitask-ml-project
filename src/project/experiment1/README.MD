@@ -1,0 +1,3 @@
+# Experiment 1: Single-task, Full model vs. Growing model
+
+This first experiment will force me to actually figure out how to implement a growing model. I don't think PyTorch will play nicely with dynamically adding parameters to an existing model. But I guess we'll find out...
