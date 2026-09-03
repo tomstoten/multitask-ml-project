@@ -3,7 +3,14 @@ import torch.utils.data.dataloader as dataloader
 import torchvision.transforms as transforms
 from medmnist import BloodMNIST, BreastMNIST, DermaMNIST, PathMNIST
 
-def load_blood_data(path="../data"):
+SUPPORTED_SIZES = (None, 64, 128, 224)
+
+def _get_medmnist_size(size: int | None) -> int:
+    if size not in SUPPORTED_SIZES:
+        raise ValueError(f"size must be one of {SUPPORTED_SIZES}, got {size!r}")
+    return 28 if size is None else size
+
+def load_blood_data(path="../data", size: int | None = None):
     """
     Input:
         path: the path of data
@@ -13,18 +20,19 @@ def load_blood_data(path="../data"):
         valid_data: The validation data
         test_data:  The test data
     """
+    size = _get_medmnist_size(size)
     data_transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.5], std=[0.5])
     ])
 
     # Load data
-    train_data = BloodMNIST(split="train", transform=data_transform, root=path)
-    valid_data = BloodMNIST(split="val", transform=data_transform, root=path)
-    test_data = BloodMNIST(split="test", transform=data_transform, root=path)
+    train_data = BloodMNIST(split="train", transform=data_transform, root=path, size=size)
+    valid_data = BloodMNIST(split="val", transform=data_transform, root=path, size=size)
+    test_data = BloodMNIST(split="test", transform=data_transform, root=path, size=size)
     return train_data, valid_data, test_data
 
-def load_breast_data(path="../data"):
+def load_breast_data(path="../data", size: int | None = None):
     """
     Input:
         path: the path of data
@@ -34,18 +42,19 @@ def load_breast_data(path="../data"):
         valid_data: The validation data
         test_data:  The test data
     """
+    size = _get_medmnist_size(size)
     data_transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.5], std=[0.5])
     ])
 
     # Load data
-    train_data = BreastMNIST(split="train", transform=data_transform, root=path)
-    valid_data = BreastMNIST(split="val", transform=data_transform, root=path)
-    test_data = BreastMNIST(split="test", transform=data_transform, root=path)
+    train_data = BreastMNIST(split="train", transform=data_transform, root=path, size=size)
+    valid_data = BreastMNIST(split="val", transform=data_transform, root=path, size=size)
+    test_data = BreastMNIST(split="test", transform=data_transform, root=path, size=size)
     return train_data, valid_data, test_data
 
-def load_derma_data(path="../data"):
+def load_derma_data(path="../data", size: int | None = None):
     """
     Input:
         path: the path of data
@@ -55,18 +64,19 @@ def load_derma_data(path="../data"):
         valid_data: The validation data
         test_data:  The test data
     """
+    size = _get_medmnist_size(size)
     data_transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.5], std=[0.5])
     ])
 
     # Load data
-    train_data = DermaMNIST(split="train", transform=data_transform, root=path)
-    valid_data = DermaMNIST(split="val", transform=data_transform, root=path)
-    test_data = DermaMNIST(split="test", transform=data_transform, root=path)
+    train_data = DermaMNIST(split="train", transform=data_transform, root=path, size=size)
+    valid_data = DermaMNIST(split="val", transform=data_transform, root=path, size=size)
+    test_data = DermaMNIST(split="test", transform=data_transform, root=path, size=size)
     return train_data, valid_data, test_data
 
-def load_path_data(path="../data"):
+def load_path_data(path="../data", size: int | None = None):
     """
     Input:
         path: the path of data
@@ -76,15 +86,16 @@ def load_path_data(path="../data"):
         valid_data: The validation data
         test_data:  The test data
     """
+    size = _get_medmnist_size(size)
     data_transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.5], std=[0.5])
     ])
 
     # Load data
-    train_data = PathMNIST(split="train", transform=data_transform, root=path)
-    valid_data = PathMNIST(split="val", transform=data_transform, root=path)
-    test_data = PathMNIST(split="test", transform=data_transform, root=path)
+    train_data = PathMNIST(split="train", transform=data_transform, root=path, size=size)
+    valid_data = PathMNIST(split="val", transform=data_transform, root=path, size=size)
+    test_data = PathMNIST(split="test", transform=data_transform, root=path, size=size)
     return train_data, valid_data, test_data
 
 def get_dataloaders(data_load_fn: Callable, batch_size, shuffle=True, num_workers=0):

@@ -2,7 +2,7 @@ from typing import Any, Dict, Union
 import json, os
 import torch
 from torch.utils.tensorboard import SummaryWriter
-from project.myModules import dataloader, timestamp, plotting
+from project.myModules import dataloader, timestamp, plotting, helpers
 import BaselineModel, GrowingModel
 
 def train_model(model: torch.nn.Module, 
@@ -11,7 +11,7 @@ def train_model(model: torch.nn.Module,
                 num_epochs: int = 100, 
                 learning_rate: float = 0.001, 
                 device: str = 'cuda',
-                timestmp: str = "run") -> Union[list, list]:
+                tag: str = "run") -> Union[list, list]:
     """
     Train the given model using the provided training and validation data loaders.
 
@@ -22,7 +22,7 @@ def train_model(model: torch.nn.Module,
         num_epochs: Number of epochs for training
         learning_rate: Learning rate for the optimizer
         device: Device to run the training on ('cuda' or 'cpu')
-        timestmp: Timestamp for the training run
+        tag: Tag for the training run
     """
     model.to(device)
     print(f"Training on device: {device}")
@@ -32,7 +32,7 @@ def train_model(model: torch.nn.Module,
     train_losses = []
     valid_losses = []
 
-    tensorboard_writer = SummaryWriter(log_dir=f'./runs/{timestmp}')
+    tensorboard_writer = SummaryWriter(log_dir=f'./runs/{tag}')
 
     for epoch in range(num_epochs):
         model.train()
@@ -104,7 +104,7 @@ def evaluate_model(model: torch.nn.Module,
     with torch.no_grad():
         for inputs, labels in test_dataloader:
             inputs: torch.Tensor = inputs.to(device)
-            labels: torch.Tensor = torch.from_numpy(labels).to(device).view(-1).long()
+            labels: torch.Tensor = labels.to(device).view(-1).long()
             outputs: torch.Tensor = model(inputs)
             probabilities = torch.softmax(outputs, dim=1)
             predictions = probabilities.argmax(dim=1)
@@ -180,26 +180,30 @@ def evaluate_model(model: torch.nn.Module,
     return metrics
 
 def main():
-    train_dataloader, valid_dataloader, test_dataloader = dataloader.get_dataloaders(dataloader.load_blood_data, 
+    torch.manual_seed(42)
+    DATASET = helpers.Dataset(*helpers.BLOOD)
+    SIZE = None
+    train_dataloader, valid_dataloader, test_dataloader = dataloader.get_dataloaders(DATASET.get_load_data_func(size=SIZE),
                                                                                      batch_size=32, 
                                                                                      shuffle=True, 
                                                                                      num_workers=4)
 
-    timestmp = timestamp.get_timestamp()
-    model = BaselineModel.BaselineModel(name="BaselineModel", num_channels=3, num_classes=8, img_size=28)
+    model = BaselineModel.BaselineModel(num_classes=DATASET.num_classes, num_channels=3)
+
+    tag = timestamp.get_timestamp() + f"_{DATASET.name}_{model.name}"
 
     train_losses, valid_losses = train_model(model, train_dataloader, valid_dataloader, 
                                              num_epochs=100, learning_rate=0.001, device='cuda', 
-                                             timestmp=timestmp)
+                                             tag=tag)
 
-    results_dir = './results/'
+    results_dir = r'C:\Users\tomst\multitask-ml-project\src\project\experiment1\results'
     os.makedirs(results_dir, exist_ok=True)
-    plotting.plot_loss(train_losses, valid_losses, title='Loss over Epochs', root=results_dir, model_name=model.name)
+    plotting.plot_loss(train_losses, valid_losses, title='Loss over Epochs', root=results_dir, model_name=model.name, tag=tag)
 
     metrics = evaluate_model(model, test_dataloader, device='cuda')
 
     json_metrics = json.dumps(metrics, indent=4)
-    with open(f'{results_dir}evaluation_metrics_{timestmp}.json', 'w') as f:
+    with open(f'{results_dir}\\evaluation_metrics_{tag}.json', 'w') as f:
         f.write(json_metrics)
 
 if __name__ == "__main__":
