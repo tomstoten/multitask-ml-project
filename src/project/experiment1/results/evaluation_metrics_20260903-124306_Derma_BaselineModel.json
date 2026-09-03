@@ -1,0 +1,82 @@
+{
+    "overall": {
+        "AUC": 0.4865173839260398,
+        "Accuracy": 0.6688279509544373,
+        "Balanced Accuracy": 0.14285714285714285,
+        "Precision": 0.0955468471677948,
+        "Recall": 0.14285714285714285,
+        "F1": 0.1145077277773034
+    },
+    "classwise": {
+        "0": {
+            "AUC": 0.5192617250378984,
+            "Accuracy": 0.9670822942643391,
+            "Balanced Accuracy": 0.5,
+            "Precision": 0.0,
+            "Recall": 0.0,
+            "F1": 0.0,
+            "Specificity": 1.0,
+            "Support": 66
+        },
+        "1": {
+            "AUC": 0.45949588067746777,
+            "Accuracy": 0.9486284289276808,
+            "Balanced Accuracy": 0.5,
+            "Precision": 0.0,
+            "Recall": 0.0,
+            "F1": 0.0,
+            "Specificity": 1.0,
+            "Support": 103
+        },
+        "2": {
+            "AUC": 0.4919556913674561,
+            "Accuracy": 0.8902743142144638,
+            "Balanced Accuracy": 0.5,
+            "Precision": 0.0,
+            "Recall": 0.0,
+            "F1": 0.0,
+            "Specificity": 1.0,
+            "Support": 220
+        },
+        "3": {
+            "AUC": 0.38421883911727284,
+            "Accuracy": 0.9885286783042394,
+            "Balanced Accuracy": 0.5,
+            "Precision": 0.0,
+            "Recall": 0.0,
+            "F1": 0.0,
+            "Specificity": 1.0,
+            "Support": 23
+        },
+        "4": {
+            "AUC": 0.5236772307026417,
+            "Accuracy": 0.8887780548628429,
+            "Balanced Accuracy": 0.5,
+            "Precision": 0.0,
+            "Recall": 0.0,
+            "F1": 0.0,
+            "Specificity": 1.0,
+            "Support": 223
+        },
+        "5": {
+            "AUC": 0.503541009676289,
+            "Accuracy": 0.6688279301745635,
+            "Balanced Accuracy": 0.5,
+            "Precision": 0.6688279301745635,
+            "Recall": 1.0,
+            "F1": 0.8015540944411238,
+            "Specificity": 0.0,
+            "Support": 1341
+        },
+        "6": {
+            "AUC": 0.5234713109032528,
+            "Accuracy": 0.9855361596009975,
+            "Balanced Accuracy": 0.5,
+            "Precision": 0.0,
+            "Recall": 0.0,
+            "F1": 0.0,
+            "Specificity": 1.0,
+            "Support": 29
+        }
+    }
+}
