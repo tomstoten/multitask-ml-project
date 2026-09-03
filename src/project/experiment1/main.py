@@ -2,7 +2,8 @@ from typing import Any, Dict, Union
 import json, os
 import torch
 from torch.utils.tensorboard import SummaryWriter
-from project.myModules import dataloader, timestamp, plotting, helpers
+from project.myModules import dataloader, timestamp, plotting
+from project.myModules.helpers import *
 import BaselineModel, GrowingModel
 
 def train_model(model: torch.nn.Module, 
@@ -179,18 +180,16 @@ def evaluate_model(model: torch.nn.Module,
 
     return metrics
 
-def main():
+def run(dataset: Dataset, size: int | None):
     torch.manual_seed(42)
-    DATASET = helpers.Dataset(*helpers.BLOOD)
-    SIZE = None
-    train_dataloader, valid_dataloader, test_dataloader = dataloader.get_dataloaders(DATASET.get_load_data_func(size=SIZE),
+    train_dataloader, valid_dataloader, test_dataloader = dataloader.get_dataloaders(dataset.get_load_data_func(size=size),
                                                                                      batch_size=32, 
                                                                                      shuffle=True, 
                                                                                      num_workers=4)
 
-    model = BaselineModel.BaselineModel(num_classes=DATASET.num_classes, num_channels=3)
+    model = BaselineModel.BaselineModel(num_classes=dataset.num_classes, num_channels=dataset.num_channels)
 
-    tag = timestamp.get_timestamp() + f"_{DATASET.name}_{model.name}"
+    tag = timestamp.get_timestamp() + f"_{dataset.name}_{model.name}"
 
     train_losses, valid_losses = train_model(model, train_dataloader, valid_dataloader, 
                                              num_epochs=100, learning_rate=0.001, device='cuda', 
@@ -205,6 +204,11 @@ def main():
     json_metrics = json.dumps(metrics, indent=4)
     with open(f'{results_dir}\\evaluation_metrics_{tag}.json', 'w') as f:
         f.write(json_metrics)
+
+def main():
+    size=None
+    for dataset in (Dataset(*Dataset.BLOOD), Dataset(*Dataset.BREAST), Dataset(*Dataset.DERMA), Dataset(*Dataset.PATH)):
+        run(dataset, size=size)
 
 if __name__ == "__main__":
     main()

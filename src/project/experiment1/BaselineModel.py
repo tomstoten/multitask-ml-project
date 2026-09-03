@@ -44,7 +44,7 @@ class BaselineModel(nn.Module):
                 nn.init.kaiming_normal_(module.weight, mode="fan_out", nonlinearity="relu")
                 if module.bias is not None:
                     nn.init.zeros_(module.bias)
-            elif isinstance(module, nn.BatchNorm2d):
+            elif isinstance(module, (nn.BatchNorm2d, nn.BatchNorm1d)):
                 nn.init.ones_(module.weight)
                 nn.init.zeros_(module.bias)
 
