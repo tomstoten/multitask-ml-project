@@ -1,10 +1,11 @@
 import torch, torch.nn as nn
 
 class BaselineModel(nn.Module):
-    def __init__(self, num_classes: int, num_channels: int = 3, size: int = 28, name: str = None):
+    def __init__(self, num_classes: int, num_channels: int = 3, size: int = 28, name: str = None, device: str = 'cuda'):
         super(BaselineModel, self).__init__()
         self.name = name if name is not None else "BaselineModel"
         self.out_features = num_classes
+        self.device = torch.device(device)
         self.features = nn.Sequential(
             nn.Conv2d(num_channels, 32, kernel_size=3, stride=1, padding=1),
             nn.BatchNorm2d(32),
@@ -38,6 +39,8 @@ class BaselineModel(nn.Module):
 
         self.init_weights()
 
+        self.to(self.device)
+
     def init_weights(self):
         for module in self.modules():
             if isinstance(module, (nn.Conv2d, nn.Linear)):
@@ -47,6 +50,9 @@ class BaselineModel(nn.Module):
             elif isinstance(module, (nn.BatchNorm2d, nn.BatchNorm1d)):
                 nn.init.ones_(module.weight)
                 nn.init.zeros_(module.bias)
+
+    def grow(self):
+        pass
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.features(x)

@@ -2,11 +2,15 @@ from typing import Any, Dict, Union
 import json, os
 import torch
 from torch.utils.tensorboard import SummaryWriter
+from dotenv import load_dotenv
 from project.myModules import dataloader, timestamp, plotting
 from project.myModules.helpers import *
-import BaselineModel, GrowingModel
+from project.experiment1.BaselineModel import BaselineModel
+from project.experiment1.GrowingModel import GrowingModel
+from project.experiment1.Classifier import Classifier
 
 def train_model(model: torch.nn.Module, 
+                classifier: torch.nn.Module,
                 train_dataloader: torch.utils.data.DataLoader, 
                 valid_dataloader: torch.utils.data.DataLoader, 
                 num_epochs: int = 100, 
@@ -25,10 +29,14 @@ def train_model(model: torch.nn.Module,
         device: Device to run the training on ('cuda' or 'cpu')
         tag: Tag for the training run
     """
-    model.to(device)
+    classifier.to(torch.device(device))
     print(f"Training on device: {device}")
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     criterion = torch.nn.CrossEntropyLoss()
+
+    best_valid_loss = float('inf')
+    best_epoch = 0
+    plateau = 10
 
     train_losses = []
     valid_losses = []
@@ -42,13 +50,19 @@ def train_model(model: torch.nn.Module,
             inputs: torch.Tensor = inputs.to(device)
             labels: torch.Tensor = labels.to(device)
             # make labels one-hot encoded for CrossEntropyLoss
-            labels = torch.nn.functional.one_hot(labels, num_classes=model.out_features).float().squeeze()
+            labels = torch.nn.functional.one_hot(labels, num_classes=classifier.out_features).float().squeeze()
 
             optimizer.zero_grad()
-            outputs: torch.Tensor = model(inputs)
+            outputs: torch.Tensor = classifier(model(inputs))
             
             loss: torch.Tensor = criterion(outputs, labels)
             loss.backward()
+
+            with torch.no_grad():
+                for module in model.modules():
+                    if hasattr(module, 'grad_mask'):
+                        module.weight.grad *= module.grad_mask
+            
             optimizer.step()
 
             train_loss += loss.item() * inputs.size(0)
@@ -62,9 +76,9 @@ def train_model(model: torch.nn.Module,
                 inputs: torch.Tensor = inputs.to(device)
                 labels: torch.Tensor = labels.to(device)
                 # make labels one-hot encoded for CrossEntropyLoss
-                labels = torch.nn.functional.one_hot(labels, num_classes=model.out_features).float().squeeze()
+                labels = torch.nn.functional.one_hot(labels, num_classes=classifier.out_features).float().squeeze()
                 
-                outputs: torch.Tensor = model(inputs)
+                outputs: torch.Tensor = classifier(model(inputs))
                 loss: torch.Tensor = criterion(outputs, labels)
                 valid_loss += loss.item() * inputs.size(0)
 
@@ -72,7 +86,19 @@ def train_model(model: torch.nn.Module,
 
         tensorboard_writer.add_scalar('Loss/Train', train_loss, epoch)
         tensorboard_writer.add_scalar('Loss/Validation', valid_loss, epoch)
-        print(f'Epoch {epoch+1}/{num_epochs}, Train Loss: {train_loss:.4f}, Valid Loss: {valid_loss:.4f}')
+        print(f'Epoch {epoch+1}/{num_epochs}, Train Loss: {train_loss:.4f}, Valid Loss: {valid_loss:.4f}', end='\r')
+
+        if valid_loss < best_valid_loss:
+            best_valid_loss = valid_loss
+            best_epoch = epoch
+
+        if epoch - best_epoch >= plateau:
+            if model.grow() != -1:
+                print(f"\nModel grown at epoch {epoch+1}. Best validation loss: {best_valid_loss:.4f} at epoch {best_epoch+1}.")
+            else:
+                print(f"\nEarly stopping at epoch {epoch+1}. Best validation loss: {best_valid_loss:.4f} at epoch {best_epoch+1}.")
+                break
+            best_epoch = epoch  # Reset the best epoch after growing
 
         train_losses.append(train_loss)
         valid_losses.append(valid_loss)
@@ -82,6 +108,7 @@ def train_model(model: torch.nn.Module,
     return train_losses, valid_losses
 
 def evaluate_model(model: torch.nn.Module,
+                   classifier: torch.nn.Module,
                    test_dataloader: torch.utils.data.DataLoader,
                    device: str = 'cuda') -> Dict[str, Any]:
     """
@@ -95,8 +122,9 @@ def evaluate_model(model: torch.nn.Module,
     Output:
         metrics: Overall and classwise evaluation metrics
     """
-    model.to(device)
     model.eval()
+    classifier.to(torch.device(device))
+    classifier.eval()
 
     all_labels = []
     all_predictions = []
@@ -106,13 +134,12 @@ def evaluate_model(model: torch.nn.Module,
         for inputs, labels in test_dataloader:
             inputs: torch.Tensor = inputs.to(device)
             labels: torch.Tensor = labels.to(device).view(-1).long()
-            outputs: torch.Tensor = model(inputs)
-            probabilities = torch.softmax(outputs, dim=1)
-            predictions = probabilities.argmax(dim=1)
+            outputs: torch.Tensor = classifier(model(inputs))
+            predictions = outputs.argmax(dim=1)
 
             all_labels.append(labels.cpu())
             all_predictions.append(predictions.cpu())
-            all_probabilities.append(probabilities.cpu())
+            all_probabilities.append(outputs.cpu())
 
     labels = torch.cat(all_labels)
     predictions = torch.cat(all_predictions)
@@ -180,26 +207,33 @@ def evaluate_model(model: torch.nn.Module,
 
     return metrics
 
-def run(dataset: Dataset, size: int | None):
+def run(model_class: torch.nn.Module, dataset: Dataset, size: int | None):
     torch.manual_seed(42)
-    train_dataloader, valid_dataloader, test_dataloader = dataloader.get_dataloaders(dataset.get_load_data_func(size=size),
+    device='cuda'
+    load_dotenv()
+    proj_path = os.getenv('PROJ_PATH')
+    data_path = os.path.join(proj_path, 'src', 'project', 'data')
+    
+    train_dataloader, valid_dataloader, test_dataloader = dataloader.get_dataloaders(dataset.get_load_data_func(
+                                                                                        path=data_path,
+                                                                                        size=size),
                                                                                      batch_size=32, 
                                                                                      shuffle=True, 
                                                                                      num_workers=4)
 
-    model = BaselineModel.BaselineModel(num_classes=dataset.num_classes, num_channels=dataset.num_channels)
+    model = model_class(num_channels=dataset.num_channels, device=device)
+    classifier = Classifier(num_classes=dataset.num_classes)
 
     tag = timestamp.get_timestamp() + f"_{dataset.name}_{model.name}"
 
-    train_losses, valid_losses = train_model(model, train_dataloader, valid_dataloader, 
-                                             num_epochs=100, learning_rate=0.001, device='cuda', 
-                                             tag=tag)
+    train_losses, valid_losses = train_model(model, classifier, train_dataloader, valid_dataloader, 
+                                             num_epochs=100, learning_rate=0.001, device=device, tag=tag)
 
-    results_dir = r'C:\Users\tomst\multitask-ml-project\src\project\experiment1\results'
+    results_dir = os.path.join(proj_path, 'src', 'project', 'experiment1', 'results')
     os.makedirs(results_dir, exist_ok=True)
     plotting.plot_loss(train_losses, valid_losses, title='Loss over Epochs', root=results_dir, model_name=model.name, tag=tag)
 
-    metrics = evaluate_model(model, test_dataloader, device='cuda')
+    metrics = evaluate_model(model, classifier, test_dataloader, device=device)
 
     json_metrics = json.dumps(metrics, indent=4)
     with open(f'{results_dir}\\evaluation_metrics_{tag}.json', 'w') as f:
@@ -207,8 +241,10 @@ def run(dataset: Dataset, size: int | None):
 
 def main():
     size=None
-    for dataset in (Dataset(*Dataset.BLOOD), Dataset(*Dataset.BREAST), Dataset(*Dataset.DERMA), Dataset(*Dataset.PATH)):
-        run(dataset, size=size)
+    run(GrowingModel, Dataset(*Dataset.BLOOD), size=size)
+    # for model_class in [BaselineModel, GrowingModel]:
+    #     for dataset in (Dataset(*Dataset.BLOOD), Dataset(*Dataset.BREAST), Dataset(*Dataset.DERMA), Dataset(*Dataset.PATH)):
+    #         run(model_class, dataset, size=size)
 
 if __name__ == "__main__":
     main()
