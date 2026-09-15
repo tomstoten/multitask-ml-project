@@ -1,7 +1,7 @@
 from typing import Callable
 import torch.utils.data.dataloader as dataloader
 import torchvision.transforms as transforms
-from medmnist import BloodMNIST, BreastMNIST, DermaMNIST, PathMNIST
+from medmnist import BloodMNIST, BreastMNIST, DermaMNIST, PathMNIST, TissueMNIST
 
 SUPPORTED_SIZES = (None, 64, 128, 224)
 
@@ -98,7 +98,36 @@ def load_path_data(path="../data", size: int | None = None):
     test_data = PathMNIST(split="test", transform=data_transform, root=path, size=size)
     return train_data, valid_data, test_data
 
-def get_dataloaders(data_load_fn: Callable, batch_size, shuffle=True, num_workers=0):
+def load_tissue_data(path="../data", size: int | None = None):
+    """
+    Input:
+        path: the path of data
+        size: the size of the images
+
+    Output (Return values):
+        train_data: The training data
+        valid_data: The validation data
+        test_data:  The test data
+    """
+    size = _get_medmnist_size(size)
+    data_transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.5], std=[0.5])
+    ])
+
+    # Load data
+    train_data = TissueMNIST(split="train", transform=data_transform, root=path, size=size)
+    valid_data = TissueMNIST(split="val", transform=data_transform, root=path, size=size)
+    test_data = TissueMNIST(split="test", transform=data_transform, root=path, size=size)
+    return train_data, valid_data, test_data
+
+def get_dataloaders(
+    data_load_fn: Callable,
+    batch_size,
+    shuffle=True,
+    num_workers=0,
+    persistent_workers=False,
+):
     """
     Creates DataLoader instances for the given dataset loading function.
 
@@ -107,6 +136,7 @@ def get_dataloaders(data_load_fn: Callable, batch_size, shuffle=True, num_worker
     - batch_size: Number of samples per batch.
     - shuffle: Whether to shuffle the data (default is True).
     - num_workers: Number of subprocesses to use for data loading (default is 0).
+    - persistent_workers: Whether workers remain alive between iterations.
     """
     train_data, valid_data, test_data = data_load_fn()
 
@@ -114,9 +144,10 @@ def get_dataloaders(data_load_fn: Callable, batch_size, shuffle=True, num_worker
     print(f"Val dataset size:\t{len(valid_data)}")
     print(f"Test dataset size:\t{len(test_data)}")
 
-    train_loader = dataloader.DataLoader(train_data, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers, persistent_workers=True, pin_memory=True)
-    valid_loader = dataloader.DataLoader(valid_data, batch_size=batch_size, shuffle=False, num_workers=num_workers, persistent_workers=True, pin_memory=True)
-    test_loader = dataloader.DataLoader(test_data, batch_size=batch_size, shuffle=False, num_workers=num_workers, persistent_workers=True, pin_memory=True)
+    keep_workers = persistent_workers and num_workers > 0
+    train_loader = dataloader.DataLoader(train_data, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers, persistent_workers=keep_workers, pin_memory=True)
+    valid_loader = dataloader.DataLoader(valid_data, batch_size=batch_size, shuffle=False, num_workers=num_workers, persistent_workers=keep_workers, pin_memory=True)
+    test_loader = dataloader.DataLoader(test_data, batch_size=batch_size, shuffle=False, num_workers=num_workers, persistent_workers=keep_workers, pin_memory=True)
 
-    
+
     return train_loader, valid_loader, test_loader

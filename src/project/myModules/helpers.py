@@ -6,6 +6,7 @@ class Dataset():
     BREAST = ("Breast", dataloader.load_breast_data, 2, 1)
     DERMA = ("Derma", dataloader.load_derma_data, 7, 3)
     PATH = ("Path", dataloader.load_path_data, 9, 3)
+    TISSUE = ("Tissue", dataloader.load_tissue_data, 8, 1)
     
     def __init__(self, name: str, load_data_func, num_classes: int, num_channels: int):
         self.name = name

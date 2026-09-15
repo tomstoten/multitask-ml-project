@@ -8,6 +8,7 @@ from project.myModules.helpers import *
 from project.experiment1.BaselineModel import BaselineModel
 from project.experiment1.GrowingModel import GrowingModel
 from project.experiment1.Classifier import Classifier
+from project.experiment1.PrettyResults import make_pretty_results
 
 def train_model(model: torch.nn.Module, 
                 classifier: torch.nn.Module,
@@ -16,7 +17,8 @@ def train_model(model: torch.nn.Module,
                 num_epochs: int = 100, 
                 learning_rate: float = 0.001, 
                 device: str = 'cuda',
-                tag: str = "run") -> Union[list, list]:
+                tag: str = "run",
+                log_path: str = "./runs") -> Union[list, list]:
     """
     Train the given model using the provided training and validation data loaders.
 
@@ -28,6 +30,7 @@ def train_model(model: torch.nn.Module,
         learning_rate: Learning rate for the optimizer
         device: Device to run the training on ('cuda' or 'cpu')
         tag: Tag for the training run
+        log_path: Path to the logging directory
     """
     classifier.to(torch.device(device))
     print(f"Training on device: {device}")
@@ -36,12 +39,12 @@ def train_model(model: torch.nn.Module,
 
     best_valid_loss = float('inf')
     best_epoch = 0
-    plateau = 10
+    plateau = 5
 
     train_losses = []
     valid_losses = []
 
-    tensorboard_writer = SummaryWriter(log_dir=f'./runs/{tag}')
+    tensorboard_writer = SummaryWriter(log_dir=f'{log_path}/{tag}')
 
     for epoch in range(num_epochs):
         model.train()
@@ -92,19 +95,26 @@ def train_model(model: torch.nn.Module,
             best_valid_loss = valid_loss
             best_epoch = epoch
 
-        if epoch - best_epoch >= plateau:
+        if epoch - best_epoch >= plateau and epoch < int(num_epochs * 8):
             if model.grow() != -1:
                 print(f"\nModel grown at epoch {epoch+1}. Best validation loss: {best_valid_loss:.4f} at epoch {best_epoch+1}.")
+            # else:
+            #     print(f"\nEarly stopping at epoch {epoch+1}. Best validation loss: {best_valid_loss:.4f} at epoch {best_epoch+1}.")
+            #     break
+            best_epoch = epoch
+            best_valid_loss = valid_loss
+
+        if epoch == int(num_epochs * 8):
+            while model.grow() != -1:
+                pass
             else:
-                print(f"\nEarly stopping at epoch {epoch+1}. Best validation loss: {best_valid_loss:.4f} at epoch {best_epoch+1}.")
-                break
-            best_epoch = epoch  # Reset the best epoch after growing
+                print("Model fully grown already.")
 
         train_losses.append(train_loss)
         valid_losses.append(valid_loss)
 
     tensorboard_writer.close()
-    print("Training complete.")
+    print("\nTraining complete.")
     return train_losses, valid_losses
 
 def evaluate_model(model: torch.nn.Module,
@@ -210,24 +220,27 @@ def evaluate_model(model: torch.nn.Module,
 def run(model_class: torch.nn.Module, dataset: Dataset, size: int | None):
     torch.manual_seed(42)
     device='cuda'
+    num_workers = 0 if os.name == 'nt' and size == 224 and (dataset.name == 'Path' or dataset.name == "Tissue") else 6
     load_dotenv()
     proj_path = os.getenv('PROJ_PATH')
     data_path = os.path.join(proj_path, 'src', 'project', 'data')
+    log_path = os.path.join(proj_path, 'src', 'project', 'experiment1', 'runs')
     
     train_dataloader, valid_dataloader, test_dataloader = dataloader.get_dataloaders(dataset.get_load_data_func(
                                                                                         path=data_path,
                                                                                         size=size),
                                                                                      batch_size=32, 
                                                                                      shuffle=True, 
-                                                                                     num_workers=4)
+                                                                                     num_workers=num_workers)
 
-    model = model_class(num_channels=dataset.num_channels, device=device)
+    model: torch.nn.Module = model_class(num_channels=dataset.num_channels, size=size, device=device)
     classifier = Classifier(num_classes=dataset.num_classes)
 
-    tag = timestamp.get_timestamp() + f"_{dataset.name}_{model.name}"
+    tag = timestamp.get_timestamp() + f"_{dataset.name}{f"_{size}" if size is not None else ''}_{model.name}"
 
     train_losses, valid_losses = train_model(model, classifier, train_dataloader, valid_dataloader, 
-                                             num_epochs=100, learning_rate=0.001, device=device, tag=tag)
+                                             num_epochs=100, learning_rate=0.001, device=device, 
+                                             tag=tag, log_path=log_path)
 
     results_dir = os.path.join(proj_path, 'src', 'project', 'experiment1', 'results')
     os.makedirs(results_dir, exist_ok=True)
@@ -239,12 +252,26 @@ def run(model_class: torch.nn.Module, dataset: Dataset, size: int | None):
     with open(f'{results_dir}\\evaluation_metrics_{tag}.json', 'w') as f:
         f.write(json_metrics)
 
+    # save model and classifier state dicts/weights
+    model_dir = os.path.join(proj_path, 'src', 'project', 'experiment1', 'models')
+    os.makedirs(model_dir, exist_ok=True)
+    torch.save(model.state_dict(), f'{model_dir}\\model_weights_{tag}.pth')
+    torch.save(classifier.state_dict(), f'{model_dir}\\classifier_weights_{tag}.pth')
+
 def main():
-    size=None
-    run(GrowingModel, Dataset(*Dataset.BLOOD), size=size)
     # for model_class in [BaselineModel, GrowingModel]:
-    #     for dataset in (Dataset(*Dataset.BLOOD), Dataset(*Dataset.BREAST), Dataset(*Dataset.DERMA), Dataset(*Dataset.PATH)):
-    #         run(model_class, dataset, size=size)
+    #     run(model_class, Dataset(*Dataset.TISSUE), size=None)
+    
+    size=224
+    for model_class in [BaselineModel]:
+        for dataset in (Dataset(*Dataset.PATH), Dataset(*Dataset.TISSUE)):
+            run(model_class, dataset, size=size)
+            
+    size=224
+    for model_class in [GrowingModel]:
+        for dataset in (Dataset(*Dataset.BLOOD), Dataset(*Dataset.BREAST), Dataset(*Dataset.DERMA), Dataset(*Dataset.PATH), Dataset(*Dataset.TISSUE)):
+            run(model_class, dataset, size=size)
 
 if __name__ == "__main__":
     main()
+    make_pretty_results()
