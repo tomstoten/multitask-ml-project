@@ -219,26 +219,27 @@ def evaluate_model(model: torch.nn.Module,
 
 def run(model_class: torch.nn.Module, dataset: Dataset, size: int | None):
     torch.manual_seed(42)
-    device='cuda'
+    device='cuda:0'
     num_workers = 0 if os.name == 'nt' and size == 224 and (dataset.name == 'Path' or dataset.name == "Tissue") else 6
     load_dotenv()
     proj_path = os.getenv('PROJ_PATH')
     data_path = os.path.join(proj_path, 'src', 'project', 'data')
     log_path = os.path.join(proj_path, 'src', 'project', 'experiment1', 'runs')
     
-    train_dataloader, valid_dataloader, test_dataloader = dataloader.get_dataloaders(dataset.get_load_data_func(
-                                                                                        path=data_path,
-                                                                                        size=size),
-                                                                                     batch_size=32, 
-                                                                                     shuffle=True, 
-                                                                                     num_workers=num_workers)
+    train_dl, valid_dl, test_dl = dataloader.get_dataloaders(dataset.get_load_data_func(
+                                                                    path=data_path,
+                                                                    size=size),
+                                                                batch_size=30 if size==224 else 60, 
+                                                                shuffle=True, 
+                                                                num_workers=num_workers,
+                                                                persistent_workers=True)
 
     model: torch.nn.Module = model_class(num_channels=dataset.num_channels, size=size, device=device)
     classifier = Classifier(num_classes=dataset.num_classes)
 
     tag = timestamp.get_timestamp() + f"_{dataset.name}{f"_{size}" if size is not None else ''}_{model.name}"
 
-    train_losses, valid_losses = train_model(model, classifier, train_dataloader, valid_dataloader, 
+    train_losses, valid_losses = train_model(model, classifier, train_dl, valid_dl, 
                                              num_epochs=100, learning_rate=0.001, device=device, 
                                              tag=tag, log_path=log_path)
 
@@ -246,7 +247,7 @@ def run(model_class: torch.nn.Module, dataset: Dataset, size: int | None):
     os.makedirs(results_dir, exist_ok=True)
     plotting.plot_loss(train_losses, valid_losses, title='Loss over Epochs', root=results_dir, model_name=model.name, tag=tag)
 
-    metrics = evaluate_model(model, classifier, test_dataloader, device=device)
+    metrics = evaluate_model(model, classifier, test_dl, device=device)
 
     json_metrics = json.dumps(metrics, indent=4)
     with open(f'{results_dir}\\evaluation_metrics_{tag}.json', 'w') as f:
@@ -264,7 +265,7 @@ def main():
     
     size=224
     for model_class in [BaselineModel]:
-        for dataset in (Dataset(*Dataset.PATH), Dataset(*Dataset.TISSUE)):
+        for dataset in [Dataset(*Dataset.TISSUE)]:
             run(model_class, dataset, size=size)
             
     size=224

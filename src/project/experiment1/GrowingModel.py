@@ -1,7 +1,12 @@
 import torch, torch.nn as nn
 
 class GrowingModel(nn.Module):
-    def __init__(self, num_channels: int = 3, size: int = 28, name: str = None, device: str = 'cuda'):
+    def __init__(self, 
+                 num_channels: int = 3, 
+                 size: int = 28, 
+                 proportions: list[float] = [0.1, 0.5, 1],
+                 name: str = None, 
+                 device: str = 'cuda'):
         super(GrowingModel, self).__init__()
         self.name = name if name is not None else "GrowingModel"
         self.device = torch.device(device)
@@ -30,7 +35,7 @@ class GrowingModel(nn.Module):
             # nn.BatchNorm1d(64),       Not sure if I want this here
         )
 
-        self.proportions = [0.1, 0.5, 1.0]
+        self.proportions = proportions
         self.prop_it = iter(enumerate(self.proportions))
 
         self.grow()
