@@ -3,7 +3,7 @@ import torch.utils.data.dataloader as dataloader
 import torchvision.transforms as transforms
 from medmnist import BloodMNIST, BreastMNIST, DermaMNIST, PathMNIST, TissueMNIST
 
-SUPPORTED_SIZES = (None, 64, 128, 224)
+SUPPORTED_SIZES = (None, 28, 64, 128, 224)
 
 def _get_medmnist_size(size: int | None) -> int:
     if size not in SUPPORTED_SIZES:
