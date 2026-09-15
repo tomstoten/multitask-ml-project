@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 
 def plot_loss(trLoss: list, valLoss: list, title='Loss over Epochs', root='./results', model_name=None, tag: str = "") -> str:
     """
@@ -27,4 +28,9 @@ def plot_loss(trLoss: list, valLoss: list, title='Loss over Epochs', root='./res
 
     outpath = f"{root}\\{title.replace(' ', '_')}_{tag}.png"
     plt.savefig(outpath)
+
+    # also save losses to a csv file for later analysis
+    loss_df = pd.DataFrame({'Training Loss': trLoss, 'Validation Loss': valLoss})
+    loss_df.to_csv(f"{root}\\losses_{tag}.csv", index=False)
+
     return outpath

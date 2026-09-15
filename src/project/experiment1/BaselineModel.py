@@ -1,10 +1,9 @@
 import torch, torch.nn as nn
 
 class BaselineModel(nn.Module):
-    def __init__(self, num_classes: int, num_channels: int = 3, size: int = 28, name: str = None, device: str = 'cuda'):
+    def __init__(self, num_channels: int = 3, size: int = 28, name: str = None, device: str = 'cuda'):
         super(BaselineModel, self).__init__()
         self.name = name if name is not None else "BaselineModel"
-        self.out_features = num_classes
         self.device = torch.device(device)
         self.features = nn.Sequential(
             nn.Conv2d(num_channels, 32, kernel_size=3, stride=1, padding=1),
@@ -31,12 +30,6 @@ class BaselineModel(nn.Module):
             # nn.BatchNorm1d(64),       Not sure if I want this here
         )
 
-        # This acts like a multinomial logistic regression i.e. it will be our deterministic final layer
-        self.classifier = nn.Sequential(
-            nn.Linear(64, num_classes),
-            nn.Softmax(dim=1)
-        )
-
         self.init_weights()
 
         self.to(self.device)
@@ -52,11 +45,10 @@ class BaselineModel(nn.Module):
                 nn.init.zeros_(module.bias)
 
     def grow(self):
-        pass
+        return -1
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.features(x)
         x = torch.flatten(x, start_dim=1)
         x = self.fc(x)
-        x = self.classifier(x)
         return x

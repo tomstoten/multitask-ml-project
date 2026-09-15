@@ -6,3 +6,4 @@ This project will use the following MedMNIST data sets:
 - breastmnist
 - dermamnist
 - pathmnist
+- tissuemnist
