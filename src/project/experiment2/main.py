@@ -224,7 +224,7 @@ def run(model_class: torch.nn.Module, dataset: Dataset, size: int | None):
     load_dotenv()
     proj_path = os.getenv('PROJ_PATH')
     data_path = os.path.join(proj_path, 'src', 'project', 'data')
-    log_path = os.path.join(proj_path, 'src', 'project', 'experiment1', 'runs')
+    log_path = os.path.join(proj_path, 'src', 'project', 'experiment2', 'runs')
     
     train_dataloader, valid_dataloader, test_dataloader = dataloader.get_dataloaders(dataset.get_load_data_func(
                                                                                         path=data_path,
@@ -242,7 +242,7 @@ def run(model_class: torch.nn.Module, dataset: Dataset, size: int | None):
                                              num_epochs=100, learning_rate=0.001, device=device, 
                                              tag=tag, log_path=log_path)
 
-    results_dir = os.path.join(proj_path, 'src', 'project', 'experiment1', 'results')
+    results_dir = os.path.join(proj_path, 'src', 'project', 'experiment2', 'results')
     os.makedirs(results_dir, exist_ok=True)
     plotting.plot_loss(train_losses, valid_losses, title='Loss over Epochs', root=results_dir, model_name=model.name, tag=tag)
 

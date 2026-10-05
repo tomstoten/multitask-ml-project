@@ -215,7 +215,7 @@ def make_pretty_results() -> None:
 	if not results:
 		raise SystemExit(f"No evaluation_metrics_*.json files found below {args.experiment_dir}")
 
-	markdown_path = args.experiment_dir / "evaluation_metrics_summary.txt"
+	markdown_path = args.experiment_dir / "evaluation_metrics_summary.md"
 	image_path = args.experiment_dir / "evaluation_metrics_summary.png"
 	markdown_path.write_text(make_markdown(results), encoding="utf-8")
 	save_color_mapped_table(results, image_path)
