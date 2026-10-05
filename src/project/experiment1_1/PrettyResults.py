@@ -17,7 +17,7 @@ from matplotlib.colors import Normalize
 FILENAME_PATTERN = re.compile(
 	r"^evaluation_metrics_(?P<timestamp>\d{8}-\d{6})_"
 	r"(?P<dataset>.+?)(?:_(?P<size>\d+))?_"
-	r"(?P<model>[^_]+)\.json$"
+	r"(?P<model>[^_]+(?:_Growby_[\d.]+)?)\.json$"
 )
 OVERALL_METRICS = (
 	"AUC",
@@ -215,7 +215,7 @@ def make_pretty_results() -> None:
 	if not results:
 		raise SystemExit(f"No evaluation_metrics_*.json files found below {args.experiment_dir}")
 
-	markdown_path = args.experiment_dir / "evaluation_metrics_summary.txt"
+	markdown_path = args.experiment_dir / "evaluation_metrics_summary.md"
 	image_path = args.experiment_dir / "evaluation_metrics_summary.png"
 	markdown_path.write_text(make_markdown(results), encoding="utf-8")
 	save_color_mapped_table(results, image_path)
