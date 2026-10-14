@@ -181,9 +181,12 @@ def _paired_permutation_test(
 	metric: str,
 	permutations: int,
 	rng: np.random.Generator,
+	progress_label: str = "",
 ) -> tuple[float, float, float, int]:
 	if metric == "AUC":
-		return _paired_auc_test(pairs)
+		result = _paired_auc_test(pairs)
+		print(f"Completed analytic AUC test | {progress_label}", flush=True)
+		return result
 
 	baseline_values = {}
 	comparison_values = {}
@@ -197,7 +200,8 @@ def _paired_permutation_test(
 	observed_difference = comparison_mean - baseline_mean
 
 	extreme_count = 0
-	for _ in range(permutations):
+	progress_interval = max(1, permutations // 100)
+	for permutation_index in range(1, permutations + 1):
 		permuted_baseline = []
 		permuted_comparison = []
 		for baseline, comparison in pairs.values():
@@ -210,6 +214,13 @@ def _paired_permutation_test(
 		permuted_difference = float(np.mean(permuted_comparison) - np.mean(permuted_baseline))
 		if abs(permuted_difference) >= abs(observed_difference) - 1e-15:
 			extreme_count += 1
+		if permutation_index % progress_interval == 0 or permutation_index == permutations:
+			print(
+				f"Simulation progress {permutation_index}/{permutations} "
+				f"({100 * permutation_index / permutations:.0f}%) | {progress_label}".ljust(140),
+				end="\r" if permutation_index < permutations else "\n",
+				flush=True,
+			)
 
 	p_value = (extreme_count + 1) / (permutations + 1)
 	sample_count = sum(len(baseline.labels) for baseline, _ in pairs.values())
@@ -295,16 +306,21 @@ def compare_models(
 
 		for scope_name, scope_pairs in scopes:
 			for metric in METRICS:
+				progress_label = (
+					f"scope={scope_name} | datasets={','.join(scope_pairs)} "
+					f"| size={size} | metric={metric}"
+				)
 				baseline_score, comparison_score, p_value, sample_count = _paired_permutation_test(
 					scope_pairs,
 					metric,
 					permutations,
 					rng,
+					progress_label,
 				)
 				rows.append({
-					"size": size,
 					"scope": scope_name,
 					"datasets": ",".join(scope_pairs),
+					"size": size,
 					"metric": metric,
 					"baseline_model": baseline_model,
 					"baseline_score": baseline_score,
@@ -321,11 +337,25 @@ def compare_models(
 	for row, adjusted_p_value in zip(rows, adjusted_p_values):
 		row["p_value_holm"] = adjusted_p_value
 		row["significant"] = adjusted_p_value < alpha
+		if row["baseline_score"] > row["comparison_score"]:
+			row["better_performance"] = baseline_model
+		elif row["comparison_score"] > row["baseline_score"]:
+			row["better_performance"] = comparison_model
+		else:
+			row["better_performance"] = "Tie"
+	metric_order = {metric: index for index, metric in enumerate(METRICS)}
+	rows.sort(key=lambda row: (
+		row["scope"],
+		row["datasets"],
+		int(row["size"]),
+		metric_order[row["metric"]],
+	))
 	return rows
 
 
-def main() -> None:
-	default_results_dir = Path(__file__).resolve().parents[1] / "experiment2" / "results"
+def main(default_results_dir=None) -> None:
+	if default_results_dir is None:
+		default_results_dir = Path(__file__).resolve().parents[1] / "experiment2" / "results"
 	parser = argparse.ArgumentParser(description=__doc__)
 	parser.add_argument("--results-dir", type=Path, default=default_results_dir)
 	parser.add_argument("--baseline", default="BaselineModel", help="Baseline model name in result filenames.")
@@ -377,7 +407,8 @@ def main() -> None:
 			f"{row['scope']} | datasets={row['datasets']} | size={row['size']} | metric={row['metric']} | "
 			f"{row['baseline_score']:.4f} -> {row['comparison_score']:.4f} "
 			f"(delta={row['difference']:+.4f}, p={row['p_value']:.4g}, "
-			f"Holm p={row['p_value_holm']:.4g}; {significance})"
+			f"Holm p={row['p_value_holm']:.4g}; {significance}) | "
+			f"better_performance={row['better_performance']}"
 		)
 	print(f"Wrote statistical comparison results to {output_path}")
 
