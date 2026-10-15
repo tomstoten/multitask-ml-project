@@ -391,10 +391,14 @@ def main(default_results_dir=None) -> None:
 	except (OSError, ValueError, KeyError, json.JSONDecodeError) as error:
 		parser.error(str(error))
 
-	output_path = args.output or args.results_dir / f"stattest_{args.model}_vs_{args.baseline}.csv"
+	output_path: Path = args.output or args.results_dir / f"stattest_{args.model}_vs_{args.baseline}.csv"
 	output_path.parent.mkdir(parents=True, exist_ok=True)
-	fieldnames = ["scope", "datasets", "size", "metric"] + [
-		field for field in rows[0] if field not in {"scope", "datasets", "size", "metric"}
+	priority_fields = {"p_value_holm", "significant", "better_performance"}
+	fieldnames = ["scope", "datasets", "size", "metric", *(
+		"p_value_holm", "significant", "better_performance"
+	)] + [
+		field for field in rows[0]
+		if field not in {"scope", "datasets", "size", "metric"} | priority_fields
 	]
 	with output_path.open("w", newline="", encoding="utf-8") as output_file:
 		writer = csv.DictWriter(output_file, fieldnames=fieldnames)
