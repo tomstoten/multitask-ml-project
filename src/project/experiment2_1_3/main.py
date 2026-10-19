@@ -87,12 +87,17 @@ def train_model(model: torch.nn.Module,
 
     best_valid_loss = float('inf')
     best_epoch = -1
+    early_stopping_epoch = -1
     plateau = 5
-    early_stopping_patience = 15
-    growth_exhausted = False
-    last_growth_epoch = -plateau
+    early_stopping_patience = 20
+    growth_cooldown = 20
+    last_growth_epoch = -growth_cooldown
     best_model_state = copy.deepcopy(model.state_dict())
     best_classifiers_state = copy.deepcopy(classifiers.state_dict())
+    best_growth_metadata = (
+        copy.deepcopy(model.get_growth_metadata())
+        if hasattr(model, "get_growth_metadata") else None
+    )
     train_losses = []
     valid_losses = []
     tensorboard_writer = SummaryWriter(log_dir=f'{log_path}/{tag}')
@@ -101,7 +106,12 @@ def train_model(model: torch.nn.Module,
         raise ValueError("Every training task must have at least one batch")
     batches_per_task = min(len(loader) for loader in train_dataloaders.values())
 
-    for epoch in range(num_epochs):
+    epoch = 0
+    while (
+        epoch < num_epochs
+        or not getattr(model, "growth_complete", True)
+        or (last_growth_epoch >= 0 and epoch - last_growth_epoch <= growth_cooldown)
+    ):
         task_schedule = [
             task
             for task in train_dataloaders
@@ -195,25 +205,46 @@ def train_model(model: torch.nn.Module,
         if macro_valid_loss < best_valid_loss:
             best_valid_loss = macro_valid_loss
             best_epoch = epoch
+            early_stopping_epoch = epoch
             best_model_state = copy.deepcopy(model.state_dict())
             best_classifiers_state = copy.deepcopy(classifiers.state_dict())
+            if hasattr(model, "get_growth_metadata"):
+                best_growth_metadata = copy.deepcopy(model.get_growth_metadata())
 
-        if not growth_exhausted and epoch - best_epoch >= plateau and epoch - last_growth_epoch >= plateau:
+        growth_complete = getattr(model, "growth_complete", True)
+        cooldown_complete = epoch - last_growth_epoch >= growth_cooldown
+        plateau_reached = epoch - best_epoch >= plateau
+        epoch_budget_reached = epoch + 1 >= num_epochs
+        if not growth_complete and cooldown_complete and (plateau_reached or epoch_budget_reached):
             if model.grow() == -1:
-                growth_exhausted = True
+                print("Model reported no remaining growth phases.")
             else:
                 last_growth_epoch = epoch
-                print(f"\nModel grown at epoch {epoch + 1}; best macro validation loss remains {best_valid_loss:.4f}.")
-
-        if growth_exhausted and epoch - best_epoch >= early_stopping_patience:
-            print(f"\nEarly stopping at epoch {epoch + 1}; best epoch was {best_epoch + 1}.")
-            break
+                early_stopping_epoch = epoch
+                print(
+                    f"\nModel grown to {getattr(model, 'growth_proportion', 'next phase')} at epoch "
+                    f"{epoch + 1}; allowing {growth_cooldown} epochs before the next growth or stop."
+                )
 
         train_losses.append(train_loss)
         valid_losses.append(macro_valid_loss)
 
+        if (
+            getattr(model, "growth_complete", True)
+            and epoch - early_stopping_epoch >= early_stopping_patience
+        ):
+            print(
+                f"\nEarly stopping at epoch {epoch + 1}; no validation improvement or model growth since "
+                f"epoch {early_stopping_epoch + 1}."
+            )
+            break
+
+        epoch += 1
+
     tensorboard_writer.close()
     model.load_state_dict(best_model_state)
+    if best_growth_metadata is not None:
+        model.restore_growth_metadata(best_growth_metadata)
     classifiers.load_state_dict(best_classifiers_state)
     print("\nTraining complete.")
     return train_losses, valid_losses
@@ -369,7 +400,7 @@ def run(model_class: torch.nn.Module, task_names: tuple[str, ...], size: int, de
         classifiers,
         train_dataloaders,
         valid_dataloaders,
-        num_epochs=100,
+        num_epochs=200,
         learning_rate=0.001,
         device=device,
         tag=tag,
@@ -397,7 +428,17 @@ def run(model_class: torch.nn.Module, task_names: tuple[str, ...], size: int, de
 
     model_dir = os.path.join(proj_path, 'src', 'project', 'experiment2_1_3', 'models')
     os.makedirs(model_dir, exist_ok=True)
-    torch.save(model.state_dict(), f'{model_dir}\\backbone_weights_{tag}.pth')
+    backbone_path = f'{model_dir}\\backbone_weights_{tag}.pth'
+    if hasattr(model, "get_growth_metadata"):
+        torch.save(
+            {
+                "state_dict": model.state_dict(),
+                "growth_metadata": model.get_growth_metadata(),
+            },
+            backbone_path,
+        )
+    else:
+        torch.save(model.state_dict(), backbone_path)
     for task, classifier in classifiers.heads.items():
         head_tag = f"{run_timestamp}_{task}_{size}_{model.name}"
         torch.save(classifier.state_dict(), f'{model_dir}\\classifier_weights_{head_tag}.pth')
@@ -466,7 +507,13 @@ def test_pretrained_model(
         size=size,
         device=resolved_device,
     )
-    model.load_state_dict(torch.load(weights_path, map_location=resolved_device, weights_only=True))
+    checkpoint = torch.load(weights_path, map_location=resolved_device, weights_only=True)
+    if isinstance(checkpoint, dict) and "state_dict" in checkpoint:
+        model.load_state_dict(checkpoint["state_dict"])
+        if "growth_metadata" in checkpoint and hasattr(model, "restore_growth_metadata"):
+            model.restore_growth_metadata(checkpoint["growth_metadata"])
+    else:
+        model.load_state_dict(checkpoint)
 
     classifiers = ClassifierHeads({task: TASKS[task][0] for task in task_names}).to(resolved_device)
     for task in task_names:

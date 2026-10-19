@@ -1,3 +1,5 @@
+import copy
+
 import torch
 import torch.nn as nn
 
@@ -28,3 +30,22 @@ class ClassifierHeads(nn.Module):
 
     def forward(self, task: str, features: torch.Tensor) -> torch.Tensor:
         return self.heads[task](features)
+
+    def to_compact(self, input_features: int) -> "ClassifierHeads":
+        """Return a copy with each classifier restricted to active backbone features."""
+        compact = copy.deepcopy(self)
+        for classifier in compact.heads.values():
+            layer = classifier.classifier
+            compact_layer = nn.Linear(
+                input_features,
+                layer.out_features,
+                bias=layer.bias is not None,
+                device=layer.weight.device,
+                dtype=layer.weight.dtype,
+            )
+            with torch.no_grad():
+                compact_layer.weight.copy_(layer.weight[:, :input_features])
+                if layer.bias is not None:
+                    compact_layer.bias.copy_(layer.bias)
+            classifier.classifier = compact_layer
+        return compact
