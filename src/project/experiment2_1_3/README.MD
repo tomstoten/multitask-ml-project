@@ -1,6 +1,9 @@
-# Experiment 2.1.2: Multi-task learning with shared backbone
+# Experiment 2.1.3: Multi-task learning with shared backbone
 
 *Change from Experiment 2.1*: Changed epochs to interleave batches of single data types instead of mixing them completely. Implemented early stopping and epoch balancing to make sure all data types in a task get equal representation during training. Also added augmentations to training data (random flips and rotation).
 
 ### Results
 
+It still looks like model performance is not significantly affected by growth vs baseline with the current growth configuration [0.1, 0.5, 1]. When early stopping, the growth models are stunted before they can converge because their losses spike every time more parameters are added, so they performed significantly worse than baseline. After adding extra time for the growth models, the models became insignificantly difference in overall performance, with growing models generally performing better in the Path (significant in AUC for 28 size, F1 and Bal. Acc. for 224 size) and Derma (significant in AUC for 224 size) datasets individually along with the Blood-Path-Derma task overall (significant in AUC for 224 size), while performance worse in the Blood (significant in AUC for 28 and 224 size) and Tissue (significant for all stats) datasets indivudally along with the Breast-Tissue task overall (not significant).
+
+This reflects the challenge with dataset balancing within a multitask run, since the Tissue and Breast datasets are combined even though the Tissue dataset accounts for over 99.9% of the samples in the combined set. It would appear that the baseline model performing significantly better for the Tissue dataset (the largest dataset by far) across the board is skewing the overall results for the other datasets, in which the growing model shows marginally better performance, resulting in an insignificant outcome. 
