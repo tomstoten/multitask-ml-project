@@ -4,3 +4,4 @@
 
 ### Results
 
+This configuration showed the baseline performing significantly better than the growing model for the full-size data (224) while insignificantly better for the small-data (28).
