@@ -795,6 +795,7 @@ dependencies = [
     { name = "setuptools" },
     { name = "tensorboard" },
     { name = "torch" },
+    { name = "torchjd" },
 ]
 
 [package.metadata]
@@ -806,6 +807,7 @@ requires-dist = [
     { name = "setuptools", specifier = ">=84.0.0" },
     { name = "tensorboard", specifier = ">=2.21.0" },
     { name = "torch", specifier = ">=2.0.0", index = "https://download.pytorch.org/whl/cu132" },
+    { name = "torchjd", specifier = ">=0.18.1" },
 ]
 
 [[package]]
@@ -1088,6 +1090,18 @@ wheels = [
     { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp315-cp315t-manylinux_2_28_aarch64.whl", hash = "sha256:02ca0c29d3ae8df621e71ec4216287236a5ba9fad7612f998dad25709be2e885", upload-time = "2026-09-02T19:11:13Z" },
     { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp315-cp315t-manylinux_2_28_x86_64.whl", hash = "sha256:a95e228125f4c6c7eaec892d8702a2134cead56bfd3dbb6dd08ab5f9a587c9f7", upload-time = "2026-09-02T19:11:28Z" },
     { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp315-cp315t-win_amd64.whl", hash = "sha256:df799914f36949451d54c79e3ced2e45dd951d0f9df189c0414cc56914d08554", upload-time = "2026-09-02T19:12:08Z" },
+]
+
+[[package]]
+name = "torchjd"
+version = "0.18.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "torch" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d7/39/18324ed3dd2c6305b401d7eff9a29ec1dc8cce46d74280f86ad9b7b76dd4/torchjd-0.18.1.tar.gz", hash = "sha256:a54826c61c0a71ea929a9dbdc8ecde2a4a7215a37cb99ecbdea24a43e162b26b", size = 92899, upload-time = "2026-11-02T10:48:28.386Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/33/e4/5f4ad96f3cf5bd54b21c69a46f7a5894cc19abaca560088eb2d2c0cbc448/torchjd-0.18.1-py3-none-any.whl", hash = "sha256:bb9e673aee4d33357b35b1561452a3ea5154e117e8a299b88a26ec684cfd9514", size = 123142, upload-time = "2026-11-02T10:48:27.321Z" },
 ]
 
 [[package]]

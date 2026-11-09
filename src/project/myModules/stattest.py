@@ -1,4 +1,4 @@
-"""Paired statistical comparisons for experiment2 test predictions."""
+"""Paired statistical comparisons for saved experiment test predictions."""
 
 from __future__ import annotations
 
@@ -23,6 +23,12 @@ RESULT_PATTERN = re.compile(
 TASK_GROUPS = {
 	"Blood-Derma-Path": ("Blood", "Derma", "Path"),
 	"Breast-Tissue": ("Breast", "Tissue"),
+	"Blood-Derma-Path-Retina": ("Blood", "Derma", "Path", "Retina"),
+	"Breast-OCT-OrganA-Pneumonia-Tissue": ("Breast", "OCT", "OrganA", "Pneumonia", "Tissue"),
+	"Adrenal-Fracture-Nodule-Organ3D-Synapse-Vessel": (
+		"Adrenal", "Fracture", "Nodule", "Organ3D", "Synapse", "Vessel",
+	),
+	"Chest": ("Chest",),
 }
 METRICS = ("AUC", "Balanced Accuracy", "F1")
 DEFAULT_PERMUTATIONS = 2000
@@ -70,7 +76,7 @@ def _load_predictions(path: Path) -> PredictionSet:
 		model=metadata["model"],
 		timestamp=metadata["timestamp"],
 		sample_indices=np.asarray([record["sample_index"] for record in records], dtype=np.int64),
-		labels=np.asarray([record["true_label"] for record in records], dtype=np.int64),
+		labels=np.asarray([record["true_label"] for record in records]),
 		scores=np.asarray([record["class_scores"] for record in records], dtype=np.float64),
 	)
 
@@ -92,14 +98,39 @@ def _validate_pair(baseline: PredictionSet, comparison: PredictionSet) -> None:
 			f"{baseline.scores.shape} vs {comparison.scores.shape}"
 		)
 
+	if baseline.labels.shape != comparison.labels.shape:
+		raise ValueError(
+			f"Target shapes differ for {baseline.dataset} size {baseline.size}: "
+			f"{baseline.labels.shape} vs {comparison.labels.shape}"
+		)
+	if baseline.labels.ndim not in (1, 2) or baseline.scores.ndim != 2:
+		raise ValueError(f"Unsupported label or score shape for {baseline.dataset}: "
+					 f"{baseline.labels.shape} and {baseline.scores.shape}")
+	if baseline.labels.shape[0] != baseline.scores.shape[0]:
+		raise ValueError(f"Label and score sample counts differ for {baseline.dataset}")
+	if baseline.labels.ndim == 2 and baseline.labels.shape != baseline.scores.shape:
+		raise ValueError(
+			f"Multi-label target and score shapes differ for {baseline.dataset}: "
+			f"{baseline.labels.shape} vs {baseline.scores.shape}"
+		)
+
 
 def _classification_metric_values(labels: np.ndarray, scores: np.ndarray) -> dict[str, float]:
-	predictions = scores.argmax(axis=1)
+	multi_label = labels.ndim == 2
+	if multi_label:
+		predictions = scores >= 0
+		labels = labels >= 0.5
+	else:
+		predictions = scores.argmax(axis=1)
 	recalls = []
 	f1_values = []
 	for class_index in range(scores.shape[1]):
-		actual = labels == class_index
-		predicted = predictions == class_index
+		if multi_label:
+			actual = labels[:, class_index]
+			predicted = predictions[:, class_index]
+		else:
+			actual = labels == class_index
+			predicted = predictions == class_index
 		positive_count = int(actual.sum())
 		true_positive = int(np.logical_and(actual, predicted).sum())
 		false_positive = int(np.logical_and(~actual, predicted).sum())
@@ -114,37 +145,49 @@ def _classification_metric_values(labels: np.ndarray, scores: np.ndarray) -> dic
 	}
 
 
+def _binary_auc_and_influence(
+	positive: np.ndarray,
+	scores: np.ndarray,
+) -> tuple[float, np.ndarray] | None:
+	sample_count = len(positive)
+	positive_count = int(positive.sum())
+	negative_count = sample_count - positive_count
+	if not positive_count or not negative_count:
+		return None
+
+	positive_scores = scores[positive]
+	negative_scores = scores[~positive]
+	sorted_positive = np.sort(positive_scores)
+	sorted_negative = np.sort(negative_scores)
+	positive_left = np.searchsorted(sorted_negative, positive_scores, side="left")
+	positive_right = np.searchsorted(sorted_negative, positive_scores, side="right")
+	negative_left = np.searchsorted(sorted_positive, negative_scores, side="left")
+	negative_right = np.searchsorted(sorted_positive, negative_scores, side="right")
+	positive_values = (positive_left + 0.5 * (positive_right - positive_left)) / negative_count
+	negative_values = (
+		positive_count - negative_right + 0.5 * (negative_right - negative_left)
+	) / positive_count
+	auc = float(np.mean(positive_values))
+	influence = np.empty(sample_count, dtype=np.float64)
+	influence[positive] = sample_count / positive_count * (positive_values - auc)
+	influence[~positive] = sample_count / negative_count * (negative_values - auc)
+	return auc, influence
+
+
 def _auc_and_influence(labels: np.ndarray, scores: np.ndarray) -> tuple[float, np.ndarray]:
-	"""Return macro one-vs-rest AUC and per-sample DeLong influence values."""
-	sample_count = len(labels)
+	"""Return macro AUC and per-sample DeLong influences for single/multi-label targets."""
 	class_influences = []
 	auc_values = []
 	for class_index in range(scores.shape[1]):
-		positive = labels == class_index
-		positive_count = int(positive.sum())
-		negative_count = sample_count - positive_count
-		if not positive_count or not negative_count:
-			raise ValueError("AUC testing requires both positive and negative samples for every class")
-
-		positive_scores = scores[positive, class_index]
-		negative_scores = scores[~positive, class_index]
-		sorted_positive = np.sort(positive_scores)
-		sorted_negative = np.sort(negative_scores)
-		positive_left = np.searchsorted(sorted_negative, positive_scores, side="left")
-		positive_right = np.searchsorted(sorted_negative, positive_scores, side="right")
-		negative_left = np.searchsorted(sorted_positive, negative_scores, side="left")
-		negative_right = np.searchsorted(sorted_positive, negative_scores, side="right")
-		positive_values = (positive_left + 0.5 * (positive_right - positive_left)) / negative_count
-		negative_values = (
-			positive_count - negative_right + 0.5 * (negative_right - negative_left)
-		) / positive_count
-		auc = float(np.mean(positive_values))
-		influence = np.empty(sample_count, dtype=np.float64)
-		influence[positive] = sample_count / positive_count * (positive_values - auc)
-		influence[~positive] = sample_count / negative_count * (negative_values - auc)
+		positive = labels[:, class_index] >= 0.5 if labels.ndim == 2 else labels == class_index
+		result = _binary_auc_and_influence(positive, scores[:, class_index])
+		if result is None:
+			continue
+		auc, influence = result
 		auc_values.append(auc)
 		class_influences.append(influence)
-
+	if not auc_values:
+		raise ValueError("AUC testing requires at least one label with positive and negative samples")
 	return float(np.mean(auc_values)), np.mean(class_influences, axis=0)
 
 
@@ -300,7 +343,7 @@ def compare_models(
 				for dataset in group_datasets
 				if dataset in dataset_pairs
 			}
-			if group_pairs:
+			if len(group_pairs) == len(group_datasets):
 				scopes.append((f"Task Group: {group_name}", group_pairs))
 		scopes.append(("All Datasets", dataset_pairs))
 
