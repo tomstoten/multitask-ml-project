@@ -1,4 +1,5 @@
-import torch, torch.nn as nn
+import torch
+import torch.nn as nn
 
 class Classifier(nn.Module):
     '''This classifier acts as a multinomial logistic regression i.e. it will be our deterministic final layer.
@@ -10,11 +11,20 @@ class Classifier(nn.Module):
     def __init__(self, num_classes: int):
         super(Classifier, self).__init__()
         self.out_features = num_classes
-        self.classifier = nn.Sequential(
-            nn.Linear(64, num_classes),
-            nn.Softmax(dim=1)
-        )
+        self.classifier = nn.Linear(64, num_classes)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        x = self.classifier(x)
-        return x
+        return self.classifier(x)
+
+
+class ClassifierHeads(nn.Module):
+    """Independent classifier heads for tasks sharing one backbone."""
+    def __init__(self, task_classes: dict[str, int]):
+        super().__init__()
+        self.heads = nn.ModuleDict({
+            task: Classifier(num_classes)
+            for task, num_classes in task_classes.items()
+        })
+
+    def forward(self, task: str, features: torch.Tensor) -> torch.Tensor:
+        return self.heads[task](features)

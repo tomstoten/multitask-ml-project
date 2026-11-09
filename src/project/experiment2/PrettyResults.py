@@ -37,7 +37,7 @@ CLASSWISE_METRICS = (
 	"Specificity",
 	"Support",
 )
-DEFAULT_OLDEST_DATETIME = datetime(2026, 9, 9, 0, 0, 0)
+DEFAULT_OLDEST_DATETIME = datetime(2026, 10, 6, 0, 0, 0)
 
 
 def parse_result_file(path: Path) -> dict[str, Any] | None:

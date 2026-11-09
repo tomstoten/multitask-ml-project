@@ -1,0 +1,3203 @@
+{
+    "sample_score_type": "logits",
+    "sample_predictions": [
+        {
+            "sample_index": 0,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.6789827346801758,
+                2.145698308944702
+            ]
+        },
+        {
+            "sample_index": 1,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.855576992034912,
+                -0.6739232540130615
+            ]
+        },
+        {
+            "sample_index": 2,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.6671487092971802,
+                -0.14150574803352356
+            ]
+        },
+        {
+            "sample_index": 3,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.9812778830528259,
+                3.970273494720459
+            ]
+        },
+        {
+            "sample_index": 4,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.3150857090950012,
+                1.4298204183578491
+            ]
+        },
+        {
+            "sample_index": 5,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.5162994861602783,
+                -0.19971096515655518
+            ]
+        },
+        {
+            "sample_index": 6,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.2819613218307495,
+                1.774245262145996
+            ]
+        },
+        {
+            "sample_index": 7,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.3937914371490479,
+                2.7214391231536865
+            ]
+        },
+        {
+            "sample_index": 8,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                2.05301833152771,
+                2.7234318256378174
+            ]
+        },
+        {
+            "sample_index": 9,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.13252007961273193,
+                0.7844741344451904
+            ]
+        },
+        {
+            "sample_index": 10,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.25297343730926514,
+                1.0982052087783813
+            ]
+        },
+        {
+            "sample_index": 11,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.4563807249069214,
+                1.142128586769104
+            ]
+        },
+        {
+            "sample_index": 12,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.3542357683181763,
+                2.6648480892181396
+            ]
+        },
+        {
+            "sample_index": 13,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                2.8057048320770264,
+                2.3398163318634033
+            ]
+        },
+        {
+            "sample_index": 14,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                -0.211261585354805,
+                -0.2639884948730469
+            ]
+        },
+        {
+            "sample_index": 15,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.0429350137710571,
+                0.8983511924743652
+            ]
+        },
+        {
+            "sample_index": 16,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.16138990223407745,
+                1.4278151988983154
+            ]
+        },
+        {
+            "sample_index": 17,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.767270565032959,
+                2.5173566341400146
+            ]
+        },
+        {
+            "sample_index": 18,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.19295728206634521,
+                0.22399131953716278
+            ]
+        },
+        {
+            "sample_index": 19,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.751684308052063,
+                1.258078694343567
+            ]
+        },
+        {
+            "sample_index": 20,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.02861367166042328,
+                1.5226178169250488
+            ]
+        },
+        {
+            "sample_index": 21,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.2615264058113098,
+                0.17557695508003235
+            ]
+        },
+        {
+            "sample_index": 22,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.6356887221336365,
+                4.008484363555908
+            ]
+        },
+        {
+            "sample_index": 23,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.1030389666557312,
+                0.5260832905769348
+            ]
+        },
+        {
+            "sample_index": 24,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.13647136092185974,
+                2.4316718578338623
+            ]
+        },
+        {
+            "sample_index": 25,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.6026090383529663,
+                0.307214617729187
+            ]
+        },
+        {
+            "sample_index": 26,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.922863781452179,
+                0.3941035866737366
+            ]
+        },
+        {
+            "sample_index": 27,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.2087490558624268,
+                2.924842357635498
+            ]
+        },
+        {
+            "sample_index": 28,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.19981497526168823,
+                1.6721224784851074
+            ]
+        },
+        {
+            "sample_index": 29,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.0210000276565552,
+                0.5293699502944946
+            ]
+        },
+        {
+            "sample_index": 30,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.2711455225944519,
+                3.00984263420105
+            ]
+        },
+        {
+            "sample_index": 31,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.9547258019447327,
+                0.9081141948699951
+            ]
+        },
+        {
+            "sample_index": 32,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.0236190557479858,
+                1.9592584371566772
+            ]
+        },
+        {
+            "sample_index": 33,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.055334463715553284,
+                4.01845645904541
+            ]
+        },
+        {
+            "sample_index": 34,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.5866014361381531,
+                0.09703178703784943
+            ]
+        },
+        {
+            "sample_index": 35,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.2822665572166443,
+                -0.30641481280326843
+            ]
+        },
+        {
+            "sample_index": 36,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.5167062282562256,
+                1.0147907733917236
+            ]
+        },
+        {
+            "sample_index": 37,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.7749004364013672,
+                4.202764511108398
+            ]
+        },
+        {
+            "sample_index": 38,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.498002052307129,
+                1.1241581439971924
+            ]
+        },
+        {
+            "sample_index": 39,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                -0.6545577645301819,
+                -1.553715705871582
+            ]
+        },
+        {
+            "sample_index": 40,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.9580865502357483,
+                2.107166290283203
+            ]
+        },
+        {
+            "sample_index": 41,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.5620904564857483,
+                0.20504283905029297
+            ]
+        },
+        {
+            "sample_index": 42,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.8436822295188904,
+                1.382729172706604
+            ]
+        },
+        {
+            "sample_index": 43,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.15412974357605,
+                2.063169002532959
+            ]
+        },
+        {
+            "sample_index": 44,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.5917991995811462,
+                0.6710433959960938
+            ]
+        },
+        {
+            "sample_index": 45,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.5747852325439453,
+                2.5618162155151367
+            ]
+        },
+        {
+            "sample_index": 46,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.1254522800445557,
+                1.3365604877471924
+            ]
+        },
+        {
+            "sample_index": 47,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.19338175654411316,
+                0.8807690143585205
+            ]
+        },
+        {
+            "sample_index": 48,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                2.1123762130737305,
+                0.5954481363296509
+            ]
+        },
+        {
+            "sample_index": 49,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.07955595850944519,
+                1.489601492881775
+            ]
+        },
+        {
+            "sample_index": 50,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.1320093870162964,
+                2.585688591003418
+            ]
+        },
+        {
+            "sample_index": 51,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.8392696976661682,
+                1.2365689277648926
+            ]
+        },
+        {
+            "sample_index": 52,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.6566162705421448,
+                1.6480627059936523
+            ]
+        },
+        {
+            "sample_index": 53,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.45064592361450195,
+                1.9305657148361206
+            ]
+        },
+        {
+            "sample_index": 54,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.796378493309021,
+                1.8429796695709229
+            ]
+        },
+        {
+            "sample_index": 55,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.9088551998138428,
+                0.21541449427604675
+            ]
+        },
+        {
+            "sample_index": 56,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.492044448852539,
+                1.228249192237854
+            ]
+        },
+        {
+            "sample_index": 57,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.19893334805965424,
+                2.742936611175537
+            ]
+        },
+        {
+            "sample_index": 58,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.7392910122871399,
+                -0.3913193643093109
+            ]
+        },
+        {
+            "sample_index": 59,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.3445940017700195,
+                2.373603105545044
+            ]
+        },
+        {
+            "sample_index": 60,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.40331554412841797,
+                2.999422788619995
+            ]
+        },
+        {
+            "sample_index": 61,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.7362475991249084,
+                1.3852794170379639
+            ]
+        },
+        {
+            "sample_index": 62,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.09551165997982025,
+                2.5621910095214844
+            ]
+        },
+        {
+            "sample_index": 63,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                -0.6514866948127747,
+                -0.8675179481506348
+            ]
+        },
+        {
+            "sample_index": 64,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.1482507884502411,
+                1.8878198862075806
+            ]
+        },
+        {
+            "sample_index": 65,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.30715131759643555,
+                1.3040672540664673
+            ]
+        },
+        {
+            "sample_index": 66,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.25033044815063477,
+                2.684455156326294
+            ]
+        },
+        {
+            "sample_index": 67,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.2899847626686096,
+                0.026735231280326843
+            ]
+        },
+        {
+            "sample_index": 68,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.7722789645195007,
+                3.3425047397613525
+            ]
+        },
+        {
+            "sample_index": 69,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.9222005605697632,
+                0.6262415647506714
+            ]
+        },
+        {
+            "sample_index": 70,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.013799116015434265,
+                1.6154268980026245
+            ]
+        },
+        {
+            "sample_index": 71,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.4816526174545288,
+                -0.3248054087162018
+            ]
+        },
+        {
+            "sample_index": 72,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.18036611378192902,
+                4.306173324584961
+            ]
+        },
+        {
+            "sample_index": 73,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.01742909848690033,
+                0.9712886810302734
+            ]
+        },
+        {
+            "sample_index": 74,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.3070231080055237,
+                -0.7892069816589355
+            ]
+        },
+        {
+            "sample_index": 75,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.07672864198684692,
+                1.6016218662261963
+            ]
+        },
+        {
+            "sample_index": 76,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.15875495970249176,
+                2.0633184909820557
+            ]
+        },
+        {
+            "sample_index": 77,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.27346503734588623,
+                0.5965166091918945
+            ]
+        },
+        {
+            "sample_index": 78,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                -0.3862684369087219,
+                -0.8980869054794312
+            ]
+        },
+        {
+            "sample_index": 79,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.0916372686624527,
+                3.9372541904449463
+            ]
+        },
+        {
+            "sample_index": 80,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.4212852716445923,
+                0.7936033010482788
+            ]
+        },
+        {
+            "sample_index": 81,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.9245238304138184,
+                1.6595053672790527
+            ]
+        },
+        {
+            "sample_index": 82,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                3.0172510147094727,
+                0.7031921148300171
+            ]
+        },
+        {
+            "sample_index": 83,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.9976059794425964,
+                2.3014330863952637
+            ]
+        },
+        {
+            "sample_index": 84,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.3080589771270752,
+                1.7380496263504028
+            ]
+        },
+        {
+            "sample_index": 85,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                -0.9683709740638733,
+                -1.1249547004699707
+            ]
+        },
+        {
+            "sample_index": 86,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.2082209438085556,
+                3.973632335662842
+            ]
+        },
+        {
+            "sample_index": 87,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.8171414732933044,
+                0.9321143627166748
+            ]
+        },
+        {
+            "sample_index": 88,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.462277889251709,
+                2.882587194442749
+            ]
+        },
+        {
+            "sample_index": 89,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.8658604621887207,
+                0.9937134981155396
+            ]
+        },
+        {
+            "sample_index": 90,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.044821932911872864,
+                3.2285735607147217
+            ]
+        },
+        {
+            "sample_index": 91,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.7900754809379578,
+                -1.0371209383010864
+            ]
+        },
+        {
+            "sample_index": 92,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.22108827531337738,
+                4.471469879150391
+            ]
+        },
+        {
+            "sample_index": 93,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.1353229135274887,
+                1.6694695949554443
+            ]
+        },
+        {
+            "sample_index": 94,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.6970310211181641,
+                1.3203462362289429
+            ]
+        },
+        {
+            "sample_index": 95,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.5820280313491821,
+                -0.9318627119064331
+            ]
+        },
+        {
+            "sample_index": 96,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.08667264878749847,
+                1.9429705142974854
+            ]
+        },
+        {
+            "sample_index": 97,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.2951982617378235,
+                -0.24872362613677979
+            ]
+        },
+        {
+            "sample_index": 98,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.28446072340011597,
+                0.3213806450366974
+            ]
+        },
+        {
+            "sample_index": 99,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.81520015001297,
+                3.1549322605133057
+            ]
+        },
+        {
+            "sample_index": 100,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.12459419667720795,
+                2.99214768409729
+            ]
+        },
+        {
+            "sample_index": 101,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.24992339313030243,
+                2.4738080501556396
+            ]
+        },
+        {
+            "sample_index": 102,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.18139348924160004,
+                0.34521347284317017
+            ]
+        },
+        {
+            "sample_index": 103,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.37374967336654663,
+                0.08865518867969513
+            ]
+        },
+        {
+            "sample_index": 104,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.7719745635986328,
+                1.7776286602020264
+            ]
+        },
+        {
+            "sample_index": 105,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.3050005435943604,
+                0.36874741315841675
+            ]
+        },
+        {
+            "sample_index": 106,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.0263363122940063,
+                3.925210952758789
+            ]
+        },
+        {
+            "sample_index": 107,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.2594637870788574,
+                -0.4690522253513336
+            ]
+        },
+        {
+            "sample_index": 108,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.2248926162719727,
+                2.7590930461883545
+            ]
+        },
+        {
+            "sample_index": 109,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.9868433475494385,
+                -0.6886386871337891
+            ]
+        },
+        {
+            "sample_index": 110,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                2.8383710384368896,
+                1.1007226705551147
+            ]
+        },
+        {
+            "sample_index": 111,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.798323929309845,
+                1.8506720066070557
+            ]
+        },
+        {
+            "sample_index": 112,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.8509483933448792,
+                0.8210887908935547
+            ]
+        },
+        {
+            "sample_index": 113,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.025636836886405945,
+                2.179561138153076
+            ]
+        },
+        {
+            "sample_index": 114,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.234102725982666,
+                2.860081195831299
+            ]
+        },
+        {
+            "sample_index": 115,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.012718439102173,
+                0.13325008749961853
+            ]
+        },
+        {
+            "sample_index": 116,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.0785050243139267,
+                1.9821418523788452
+            ]
+        },
+        {
+            "sample_index": 117,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                -0.4302089214324951,
+                -0.7486996650695801
+            ]
+        },
+        {
+            "sample_index": 118,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.1218175888061523,
+                1.864894151687622
+            ]
+        },
+        {
+            "sample_index": 119,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.8182752728462219,
+                1.9913060665130615
+            ]
+        },
+        {
+            "sample_index": 120,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.2551605701446533,
+                2.933361291885376
+            ]
+        },
+        {
+            "sample_index": 121,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.5448155999183655,
+                -0.7957762479782104
+            ]
+        },
+        {
+            "sample_index": 122,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.09847049415111542,
+                1.5928459167480469
+            ]
+        },
+        {
+            "sample_index": 123,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.08295674622058868,
+                2.47268009185791
+            ]
+        },
+        {
+            "sample_index": 124,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                2.059443712234497,
+                0.5348856449127197
+            ]
+        },
+        {
+            "sample_index": 125,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.892244815826416,
+                2.778273105621338
+            ]
+        },
+        {
+            "sample_index": 126,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.229123830795288,
+                0.8890031576156616
+            ]
+        },
+        {
+            "sample_index": 127,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.4795032739639282,
+                1.7064626216888428
+            ]
+        },
+        {
+            "sample_index": 128,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.6096346378326416,
+                -0.36214479804039
+            ]
+        },
+        {
+            "sample_index": 129,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.6644903421401978,
+                5.884300708770752
+            ]
+        },
+        {
+            "sample_index": 130,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.0494247674942017,
+                0.5396233201026917
+            ]
+        },
+        {
+            "sample_index": 131,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                -0.07175867259502411,
+                -0.4636586010456085
+            ]
+        },
+        {
+            "sample_index": 132,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.6851148009300232,
+                0.2538168132305145
+            ]
+        },
+        {
+            "sample_index": 133,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.1679513454437256,
+                -0.04439854621887207
+            ]
+        },
+        {
+            "sample_index": 134,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.30275923013687134,
+                3.7003021240234375
+            ]
+        },
+        {
+            "sample_index": 135,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.6394792199134827,
+                2.1972134113311768
+            ]
+        },
+        {
+            "sample_index": 136,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5216622352600098,
+                0.5733965635299683
+            ]
+        },
+        {
+            "sample_index": 137,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.5277885794639587,
+                0.6366138458251953
+            ]
+        },
+        {
+            "sample_index": 138,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.37949374318122864,
+                1.179474115371704
+            ]
+        },
+        {
+            "sample_index": 139,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.28377407789230347,
+                3.5076403617858887
+            ]
+        },
+        {
+            "sample_index": 140,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.0325862169265747,
+                2.749622106552124
+            ]
+        },
+        {
+            "sample_index": 141,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.6962204575538635,
+                0.30078354477882385
+            ]
+        },
+        {
+            "sample_index": 142,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.12980340421199799,
+                2.274171829223633
+            ]
+        },
+        {
+            "sample_index": 143,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.5988427400588989,
+                0.6502457857131958
+            ]
+        },
+        {
+            "sample_index": 144,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                2.0074338912963867,
+                1.5681756734848022
+            ]
+        },
+        {
+            "sample_index": 145,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.43545377254486084,
+                4.362099647521973
+            ]
+        },
+        {
+            "sample_index": 146,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.377172589302063,
+                0.7443606853485107
+            ]
+        },
+        {
+            "sample_index": 147,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.1727702617645264,
+                -1.018043041229248
+            ]
+        },
+        {
+            "sample_index": 148,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.9576693177223206,
+                1.6395509243011475
+            ]
+        },
+        {
+            "sample_index": 149,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.600974977016449,
+                3.4086625576019287
+            ]
+        },
+        {
+            "sample_index": 150,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.2330143451690674,
+                -1.2041956186294556
+            ]
+        },
+        {
+            "sample_index": 151,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.15651892125606537,
+                1.6742690801620483
+            ]
+        },
+        {
+            "sample_index": 152,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.10334019362926483,
+                3.439678192138672
+            ]
+        },
+        {
+            "sample_index": 153,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5681650042533875,
+                1.6302175521850586
+            ]
+        },
+        {
+            "sample_index": 154,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.8916048407554626,
+                -0.28247353434562683
+            ]
+        },
+        {
+            "sample_index": 155,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5659569501876831,
+                1.6192208528518677
+            ]
+        },
+        {
+            "sample_index": 156,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.09051613509654999,
+                1.3675355911254883
+            ]
+        },
+        {
+            "sample_index": 157,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.9943415522575378,
+                4.343064785003662
+            ]
+        },
+        {
+            "sample_index": 158,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.5340049862861633,
+                -1.1559597253799438
+            ]
+        },
+        {
+            "sample_index": 159,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.43968576192855835,
+                1.1839683055877686
+            ]
+        },
+        {
+            "sample_index": 160,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.8435991406440735,
+                3.0991861820220947
+            ]
+        },
+        {
+            "sample_index": 161,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.27059513330459595,
+                -0.42170223593711853
+            ]
+        },
+        {
+            "sample_index": 162,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.3843727111816406,
+                0.06712132692337036
+            ]
+        },
+        {
+            "sample_index": 163,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.2236718088388443,
+                2.7591805458068848
+            ]
+        },
+        {
+            "sample_index": 164,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                2.085226058959961,
+                1.8352582454681396
+            ]
+        },
+        {
+            "sample_index": 165,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.48104190826416,
+                0.4788418710231781
+            ]
+        },
+        {
+            "sample_index": 166,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.282464861869812,
+                2.4136435985565186
+            ]
+        },
+        {
+            "sample_index": 167,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.17509977519512177,
+                0.9609495401382446
+            ]
+        },
+        {
+            "sample_index": 168,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.7427176833152771,
+                2.396182060241699
+            ]
+        },
+        {
+            "sample_index": 169,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.4597383141517639,
+                0.8211712837219238
+            ]
+        },
+        {
+            "sample_index": 170,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.490714430809021,
+                0.1354692429304123
+            ]
+        },
+        {
+            "sample_index": 171,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.10226298868656158,
+                2.3165581226348877
+            ]
+        },
+        {
+            "sample_index": 172,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.32101792097091675,
+                2.691970109939575
+            ]
+        },
+        {
+            "sample_index": 173,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.7378668785095215,
+                -0.07185882329940796
+            ]
+        },
+        {
+            "sample_index": 174,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.6385639309883118,
+                2.01851224899292
+            ]
+        },
+        {
+            "sample_index": 175,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.3001892566680908,
+                0.9875222444534302
+            ]
+        },
+        {
+            "sample_index": 176,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.0963551253080368,
+                0.7245969772338867
+            ]
+        },
+        {
+            "sample_index": 177,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.8261197805404663,
+                2.6888427734375
+            ]
+        },
+        {
+            "sample_index": 178,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.6207780241966248,
+                0.9559687376022339
+            ]
+        },
+        {
+            "sample_index": 179,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.221091628074646,
+                2.017594575881958
+            ]
+        },
+        {
+            "sample_index": 180,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.8979057669639587,
+                0.6805130243301392
+            ]
+        },
+        {
+            "sample_index": 181,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                3.048950433731079,
+                1.364338994026184
+            ]
+        },
+        {
+            "sample_index": 182,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.1265757083892822,
+                1.2655696868896484
+            ]
+        },
+        {
+            "sample_index": 183,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.17676310241222382,
+                2.1760740280151367
+            ]
+        },
+        {
+            "sample_index": 184,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                2.086711883544922,
+                0.003841713070869446
+            ]
+        },
+        {
+            "sample_index": 185,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.6348726749420166,
+                2.534087657928467
+            ]
+        },
+        {
+            "sample_index": 186,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.9514868259429932,
+                1.1992918252944946
+            ]
+        },
+        {
+            "sample_index": 187,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.0310642719268799,
+                2.3042056560516357
+            ]
+        },
+        {
+            "sample_index": 188,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.08811865746974945,
+                0.4956855773925781
+            ]
+        },
+        {
+            "sample_index": 189,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.3459835052490234,
+                2.0416409969329834
+            ]
+        },
+        {
+            "sample_index": 190,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.41485893726348877,
+                2.729954957962036
+            ]
+        },
+        {
+            "sample_index": 191,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.9280920624732971,
+                0.5582261085510254
+            ]
+        },
+        {
+            "sample_index": 192,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.570145606994629,
+                2.2821226119995117
+            ]
+        },
+        {
+            "sample_index": 193,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.035274863243103,
+                1.0747013092041016
+            ]
+        },
+        {
+            "sample_index": 194,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                3.0048279762268066,
+                2.31638503074646
+            ]
+        },
+        {
+            "sample_index": 195,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.8754637837409973,
+                0.030801743268966675
+            ]
+        },
+        {
+            "sample_index": 196,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.29902225732803345,
+                3.2539522647857666
+            ]
+        },
+        {
+            "sample_index": 197,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.23951226472854614,
+                1.619628667831421
+            ]
+        },
+        {
+            "sample_index": 198,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.9321957230567932,
+                1.067230224609375
+            ]
+        },
+        {
+            "sample_index": 199,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.791071355342865,
+                -0.5626578330993652
+            ]
+        },
+        {
+            "sample_index": 200,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.3377528190612793,
+                2.9057095050811768
+            ]
+        },
+        {
+            "sample_index": 201,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.8127713799476624,
+                0.4400056004524231
+            ]
+        },
+        {
+            "sample_index": 202,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.4940226078033447,
+                -0.4922514855861664
+            ]
+        },
+        {
+            "sample_index": 203,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.5997148752212524,
+                2.8629932403564453
+            ]
+        },
+        {
+            "sample_index": 204,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.4974537491798401,
+                2.6198694705963135
+            ]
+        },
+        {
+            "sample_index": 205,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.38405585289001465,
+                1.922572374343872
+            ]
+        },
+        {
+            "sample_index": 206,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.30216288566589355,
+                -0.4220757782459259
+            ]
+        },
+        {
+            "sample_index": 207,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.3359636664390564,
+                1.9541360139846802
+            ]
+        },
+        {
+            "sample_index": 208,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.1392676830291748,
+                -0.5301473140716553
+            ]
+        },
+        {
+            "sample_index": 209,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                2.9890894889831543,
+                1.5380949974060059
+            ]
+        },
+        {
+            "sample_index": 210,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.348924994468689,
+                2.3245484828948975
+            ]
+        },
+        {
+            "sample_index": 211,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.36604106426239014,
+                2.5421853065490723
+            ]
+        },
+        {
+            "sample_index": 212,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.22414164245128632,
+                3.288224458694458
+            ]
+        },
+        {
+            "sample_index": 213,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.1409947872161865,
+                -0.5836033821105957
+            ]
+        },
+        {
+            "sample_index": 214,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.7964381575584412,
+                0.4538698196411133
+            ]
+        },
+        {
+            "sample_index": 215,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.9149192571640015,
+                2.7194061279296875
+            ]
+        },
+        {
+            "sample_index": 216,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.48385030031204224,
+                3.244750499725342
+            ]
+        },
+        {
+            "sample_index": 217,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.917964518070221,
+                0.3279404640197754
+            ]
+        },
+        {
+            "sample_index": 218,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.191056489944458,
+                2.495265007019043
+            ]
+        },
+        {
+            "sample_index": 219,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.6416015028953552,
+                -0.584610104560852
+            ]
+        },
+        {
+            "sample_index": 220,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.4370099306106567,
+                2.273564100265503
+            ]
+        },
+        {
+            "sample_index": 221,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.2204498052597046,
+                -0.7563953399658203
+            ]
+        },
+        {
+            "sample_index": 222,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.785195529460907,
+                1.6740219593048096
+            ]
+        },
+        {
+            "sample_index": 223,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                2.38968825340271,
+                2.8009281158447266
+            ]
+        },
+        {
+            "sample_index": 224,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                2.0597312450408936,
+                -0.5345563888549805
+            ]
+        },
+        {
+            "sample_index": 225,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.4657999277114868,
+                3.6217072010040283
+            ]
+        },
+        {
+            "sample_index": 226,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.33496177196502686,
+                0.7748469114303589
+            ]
+        },
+        {
+            "sample_index": 227,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.4749019145965576,
+                1.9127635955810547
+            ]
+        },
+        {
+            "sample_index": 228,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.6753593683242798,
+                2.2450621128082275
+            ]
+        },
+        {
+            "sample_index": 229,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.10356752574443817,
+                2.693302869796753
+            ]
+        },
+        {
+            "sample_index": 230,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.3618521690368652,
+                1.1246792078018188
+            ]
+        },
+        {
+            "sample_index": 231,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.27843397855758667,
+                -0.5091612339019775
+            ]
+        },
+        {
+            "sample_index": 232,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.17818506062030792,
+                2.0542409420013428
+            ]
+        },
+        {
+            "sample_index": 233,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.5612293481826782,
+                1.1241391897201538
+            ]
+        },
+        {
+            "sample_index": 234,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.10037212073802948,
+                0.22386518120765686
+            ]
+        },
+        {
+            "sample_index": 235,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.4844459295272827,
+                2.6304595470428467
+            ]
+        },
+        {
+            "sample_index": 236,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.0489139556884766,
+                2.2061378955841064
+            ]
+        },
+        {
+            "sample_index": 237,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.6503915190696716,
+                0.8500028848648071
+            ]
+        },
+        {
+            "sample_index": 238,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5723387002944946,
+                3.8936784267425537
+            ]
+        },
+        {
+            "sample_index": 239,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.9534387588500977,
+                -1.477638840675354
+            ]
+        },
+        {
+            "sample_index": 240,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.5371540784835815,
+                2.9182064533233643
+            ]
+        },
+        {
+            "sample_index": 241,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                1.461539387702942,
+                1.204254150390625
+            ]
+        },
+        {
+            "sample_index": 242,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.3063216209411621,
+                0.5892937183380127
+            ]
+        },
+        {
+            "sample_index": 243,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.562371015548706,
+                0.8589770793914795
+            ]
+        },
+        {
+            "sample_index": 244,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5516349673271179,
+                3.345656156539917
+            ]
+        },
+        {
+            "sample_index": 245,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.07427094876766205,
+                0.8159369230270386
+            ]
+        },
+        {
+            "sample_index": 246,
+            "true_label": 1,
+            "predicted_label": 0,
+            "class_scores": [
+                0.5392611622810364,
+                -0.8652180433273315
+            ]
+        },
+        {
+            "sample_index": 247,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.066535085439682,
+                1.9150390625
+            ]
+        },
+        {
+            "sample_index": 248,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.013685539364814758,
+                1.366253137588501
+            ]
+        },
+        {
+            "sample_index": 249,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.4904234409332275,
+                1.991611123085022
+            ]
+        },
+        {
+            "sample_index": 250,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                1.4087039232254028,
+                1.445670247077942
+            ]
+        },
+        {
+            "sample_index": 251,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.10048578679561615,
+                1.2266038656234741
+            ]
+        },
+        {
+            "sample_index": 252,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.10200144350528717,
+                0.3466108441352844
+            ]
+        },
+        {
+            "sample_index": 253,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.354162573814392,
+                1.6187018156051636
+            ]
+        },
+        {
+            "sample_index": 254,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.5651794075965881,
+                1.4433434009552002
+            ]
+        },
+        {
+            "sample_index": 255,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                0.8053788542747498,
+                2.1210718154907227
+            ]
+        },
+        {
+            "sample_index": 256,
+            "true_label": 1,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.521236002445221,
+                2.1091320514678955
+            ]
+        },
+        {
+            "sample_index": 257,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.462117075920105,
+                2.323509454727173
+            ]
+        },
+        {
+            "sample_index": 258,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.7034077048301697,
+                0.7398639917373657
+            ]
+        },
+        {
+            "sample_index": 259,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5777183175086975,
+                0.4192160367965698
+            ]
+        },
+        {
+            "sample_index": 260,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.15171080827713013,
+                0.2316160798072815
+            ]
+        },
+        {
+            "sample_index": 261,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.7949314713478088,
+                1.3143155574798584
+            ]
+        },
+        {
+            "sample_index": 262,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.160764694213867,
+                2.2294368743896484
+            ]
+        },
+        {
+            "sample_index": 263,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                1.4066511392593384,
+                1.9344431161880493
+            ]
+        },
+        {
+            "sample_index": 264,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.0800679922103882,
+                0.23302704095840454
+            ]
+        },
+        {
+            "sample_index": 265,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.34779685735702515,
+                3.0439236164093018
+            ]
+        },
+        {
+            "sample_index": 266,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.8155657052993774,
+                1.975547194480896
+            ]
+        },
+        {
+            "sample_index": 267,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.2130820751190186,
+                0.35821372270584106
+            ]
+        },
+        {
+            "sample_index": 268,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.1963568925857544,
+                2.060110330581665
+            ]
+        },
+        {
+            "sample_index": 269,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.4836028814315796,
+                -0.3484250605106354
+            ]
+        },
+        {
+            "sample_index": 270,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                2.0189592838287354,
+                1.3040456771850586
+            ]
+        },
+        {
+            "sample_index": 271,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.46392250061035156,
+                2.579014778137207
+            ]
+        },
+        {
+            "sample_index": 272,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                0.7048546671867371,
+                -1.25484037399292
+            ]
+        },
+        {
+            "sample_index": 273,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.3609771728515625,
+                0.71892249584198
+            ]
+        },
+        {
+            "sample_index": 274,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.628491222858429,
+                1.911316990852356
+            ]
+        },
+        {
+            "sample_index": 275,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.120922565460205,
+                4.449649333953857
+            ]
+        },
+        {
+            "sample_index": 276,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.4766785502433777,
+                3.1836602687835693
+            ]
+        },
+        {
+            "sample_index": 277,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.7702872157096863,
+                2.142627239227295
+            ]
+        },
+        {
+            "sample_index": 278,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.8239850401878357,
+                1.2108595371246338
+            ]
+        },
+        {
+            "sample_index": 279,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5487055778503418,
+                -0.4500371515750885
+            ]
+        },
+        {
+            "sample_index": 280,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.18548284471035004,
+                4.155766010284424
+            ]
+        },
+        {
+            "sample_index": 281,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.7197115421295166,
+                -0.187462717294693
+            ]
+        },
+        {
+            "sample_index": 282,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.0486925840377808,
+                -0.5455119609832764
+            ]
+        },
+        {
+            "sample_index": 283,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5642094612121582,
+                1.9388737678527832
+            ]
+        },
+        {
+            "sample_index": 284,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.20199789106845856,
+                5.325854778289795
+            ]
+        },
+        {
+            "sample_index": 285,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.0870332717895508,
+                -0.08665099740028381
+            ]
+        },
+        {
+            "sample_index": 286,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                0.06765665113925934,
+                -0.49272486567497253
+            ]
+        },
+        {
+            "sample_index": 287,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.1077080965042114,
+                1.000759482383728
+            ]
+        },
+        {
+            "sample_index": 288,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.849564552307129,
+                0.13323205709457397
+            ]
+        },
+        {
+            "sample_index": 289,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.005033254623413,
+                -0.3176420032978058
+            ]
+        },
+        {
+            "sample_index": 290,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.3337864875793457,
+                3.178762674331665
+            ]
+        },
+        {
+            "sample_index": 291,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.26839733123779297,
+                2.5510730743408203
+            ]
+        },
+        {
+            "sample_index": 292,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.6033383011817932,
+                0.7698545455932617
+            ]
+        },
+        {
+            "sample_index": 293,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                1.0830767154693604,
+                1.2083157300949097
+            ]
+        },
+        {
+            "sample_index": 294,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.1554467678070068,
+                2.405195951461792
+            ]
+        },
+        {
+            "sample_index": 295,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.6120421886444092,
+                1.4317312240600586
+            ]
+        },
+        {
+            "sample_index": 296,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.1182454824447632,
+                1.2086737155914307
+            ]
+        },
+        {
+            "sample_index": 297,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                1.6932932138442993,
+                2.7208940982818604
+            ]
+        },
+        {
+            "sample_index": 298,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.3652673959732056,
+                2.977994680404663
+            ]
+        },
+        {
+            "sample_index": 299,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                0.7967585921287537,
+                -1.0245707035064697
+            ]
+        },
+        {
+            "sample_index": 300,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.07956747710704803,
+                1.6346558332443237
+            ]
+        },
+        {
+            "sample_index": 301,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.4655885100364685,
+                1.216894268989563
+            ]
+        },
+        {
+            "sample_index": 302,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.5887479782104492,
+                -0.7478456497192383
+            ]
+        },
+        {
+            "sample_index": 303,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.052237629890442,
+                3.5820720195770264
+            ]
+        },
+        {
+            "sample_index": 304,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.7036215662956238,
+                -0.6042944192886353
+            ]
+        },
+        {
+            "sample_index": 305,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.896014392375946,
+                4.750409126281738
+            ]
+        },
+        {
+            "sample_index": 306,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                2.0947389602661133,
+                0.9573310613632202
+            ]
+        },
+        {
+            "sample_index": 307,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.41201597452163696,
+                1.1694533824920654
+            ]
+        },
+        {
+            "sample_index": 308,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.1102713346481323,
+                -0.21071749925613403
+            ]
+        },
+        {
+            "sample_index": 309,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                2.2228028774261475,
+                0.7040247917175293
+            ]
+        },
+        {
+            "sample_index": 310,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.20083469152450562,
+                1.4694781303405762
+            ]
+        },
+        {
+            "sample_index": 311,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.8448610305786133,
+                3.4464008808135986
+            ]
+        },
+        {
+            "sample_index": 312,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.0063917636871338,
+                0.6686786413192749
+            ]
+        },
+        {
+            "sample_index": 313,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.9675391316413879,
+                2.7583823204040527
+            ]
+        },
+        {
+            "sample_index": 314,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.60836923122406,
+                1.3820714950561523
+            ]
+        },
+        {
+            "sample_index": 315,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.38293948769569397,
+                1.2128589153289795
+            ]
+        },
+        {
+            "sample_index": 316,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.03709426522254944,
+                0.48682901263237
+            ]
+        },
+        {
+            "sample_index": 317,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.7318901419639587,
+                2.476569175720215
+            ]
+        },
+        {
+            "sample_index": 318,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                0.7130475640296936,
+                0.5986698865890503
+            ]
+        },
+        {
+            "sample_index": 319,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.11020871996879578,
+                2.4870667457580566
+            ]
+        },
+        {
+            "sample_index": 320,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.44327953457832336,
+                1.2210288047790527
+            ]
+        },
+        {
+            "sample_index": 321,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.2924293279647827,
+                1.265164852142334
+            ]
+        },
+        {
+            "sample_index": 322,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                1.462475299835205,
+                1.629003882408142
+            ]
+        },
+        {
+            "sample_index": 323,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.9373793005943298,
+                1.8006901741027832
+            ]
+        },
+        {
+            "sample_index": 324,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.45440101623535156,
+                0.49364233016967773
+            ]
+        },
+        {
+            "sample_index": 325,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.6218501925468445,
+                0.7446490526199341
+            ]
+        },
+        {
+            "sample_index": 326,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5691574811935425,
+                3.17840838432312
+            ]
+        },
+        {
+            "sample_index": 327,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.2406754046678543,
+                1.436000943183899
+            ]
+        },
+        {
+            "sample_index": 328,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.2123526334762573,
+                1.631995677947998
+            ]
+        },
+        {
+            "sample_index": 329,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.5487810969352722,
+                1.450314998626709
+            ]
+        },
+        {
+            "sample_index": 330,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.39387738704681396,
+                1.1565611362457275
+            ]
+        },
+        {
+            "sample_index": 331,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                2.4307425022125244,
+                1.6060924530029297
+            ]
+        },
+        {
+            "sample_index": 332,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.6972169280052185,
+                3.941161632537842
+            ]
+        },
+        {
+            "sample_index": 333,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.921018362045288,
+                1.4756065607070923
+            ]
+        },
+        {
+            "sample_index": 334,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                0.299677312374115,
+                0.060749351978302
+            ]
+        },
+        {
+            "sample_index": 335,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -2.096618175506592,
+                0.16537919640541077
+            ]
+        },
+        {
+            "sample_index": 336,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.2505414485931396,
+                -0.4544317424297333
+            ]
+        },
+        {
+            "sample_index": 337,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                1.161012887954712,
+                2.432636260986328
+            ]
+        },
+        {
+            "sample_index": 338,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.6527647972106934,
+                2.5773394107818604
+            ]
+        },
+        {
+            "sample_index": 339,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.2275785207748413,
+                0.8452438116073608
+            ]
+        },
+        {
+            "sample_index": 340,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.7551671266555786,
+                1.799516201019287
+            ]
+        },
+        {
+            "sample_index": 341,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.7785441875457764,
+                0.9233962297439575
+            ]
+        },
+        {
+            "sample_index": 342,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                0.6641258597373962,
+                0.09468205273151398
+            ]
+        },
+        {
+            "sample_index": 343,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.9929376244544983,
+                2.8109424114227295
+            ]
+        },
+        {
+            "sample_index": 344,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.13973568379878998,
+                1.8814681768417358
+            ]
+        },
+        {
+            "sample_index": 345,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                0.7289134860038757,
+                -1.2351505756378174
+            ]
+        },
+        {
+            "sample_index": 346,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.6040886640548706,
+                2.6830952167510986
+            ]
+        },
+        {
+            "sample_index": 347,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                0.8003146052360535,
+                2.355253219604492
+            ]
+        },
+        {
+            "sample_index": 348,
+            "true_label": 0,
+            "predicted_label": 0,
+            "class_scores": [
+                1.3136968612670898,
+                -0.6187037229537964
+            ]
+        },
+        {
+            "sample_index": 349,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.012171193957328796,
+                2.779794692993164
+            ]
+        },
+        {
+            "sample_index": 350,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -1.007497787475586,
+                0.3774539828300476
+            ]
+        },
+        {
+            "sample_index": 351,
+            "true_label": 0,
+            "predicted_label": 1,
+            "class_scores": [
+                -0.17458166182041168,
+                3.187201976776123
+            ]
+        }
+    ],
+    "overall": {
+        "AUC": 0.5015154618062666,
+        "Accuracy": 0.6136363744735718,
+        "Balanced Accuracy": 0.49322138029899654,
+        "Precision": 0.49270764485569507,
+        "Recall": 0.49322138029899654,
+        "F1": 0.49245122985580997
+    },
+    "classwise": {
+        "0": {
+            "AUC": 0.4962113454843334,
+            "Accuracy": 0.6136363636363636,
+            "Balanced Accuracy": 0.49322138029899654,
+            "Precision": 0.25882352941176473,
+            "Recall": 0.23157894736842105,
+            "F1": 0.24444444444444446,
+            "Specificity": 0.754863813229572,
+            "Support": 95
+        },
+        "1": {
+            "AUC": 0.5068195781281999,
+            "Accuracy": 0.6136363636363636,
+            "Balanced Accuracy": 0.49322138029899654,
+            "Precision": 0.7265917602996255,
+            "Recall": 0.754863813229572,
+            "F1": 0.7404580152671755,
+            "Specificity": 0.23157894736842105,
+            "Support": 257
+        }
+    }
+}

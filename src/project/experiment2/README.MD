@@ -15,3 +15,9 @@ I will leave the door open for future addition of more datasets, but in this ini
 Refactoring the dataloaders was inevitable, so I guess now is the time to do it. I think it best to move dataloaders inside of experiments to let me tinker with them for each new experiment without ruining the implementation for previous experiments. 
 
 I also want to try getting faster dataloading by using memory-mapping and lazy loading.
+
+### Results
+
+It looks like many of these multi-task models are overfitting: validation curves are going up consistently, while training curves move low or stay low.
+
+I think I will try again with a decrease LR on plateau scheduler and a little bit of weight decay on the optimizer. Then future experiments can compare growth schedules here.

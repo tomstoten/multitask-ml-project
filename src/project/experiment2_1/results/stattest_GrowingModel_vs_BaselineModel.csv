@@ -1,0 +1,49 @@
+scope,datasets,size,metric,baseline_model,baseline_score,comparison_model,comparison_score,difference,p_value,sample_count,test_method,permutations,p_value_holm,significant
+All Datasets,"Blood,Derma,Path,Breast,Tissue",28,AUC,BaselineModel,0.9229618049517413,GrowingModel,0.9120738379533926,-0.010887966998348708,0.02477956284197171,60042,paired DeLong approximation,,0.768166448101123,False
+All Datasets,"Blood,Derma,Path,Breast,Tissue",28,Balanced Accuracy,BaselineModel,0.698157777496395,GrowingModel,0.6923180880442796,-0.005839689452115326,0.4142928535732134,60042,paired output-swap permutation,2000,1.0,False
+All Datasets,"Blood,Derma,Path,Breast,Tissue",28,F1,BaselineModel,0.7091077971756955,GrowingModel,0.7016534243956186,-0.007454372780076879,0.3263368315842079,60042,paired output-swap permutation,2000,1.0,False
+All Datasets,"Blood,Derma,Path,Breast,Tissue",224,AUC,BaselineModel,0.9090095178056083,GrowingModel,0.8999942489331054,-0.009015268872502924,0.1330171406885937,60042,paired DeLong approximation,,1.0,False
+All Datasets,"Blood,Derma,Path,Breast,Tissue",224,Balanced Accuracy,BaselineModel,0.699327577722306,GrowingModel,0.686976485356309,-0.012351092365997074,0.15792103948025987,60042,paired output-swap permutation,2000,1.0,False
+All Datasets,"Blood,Derma,Path,Breast,Tissue",224,F1,BaselineModel,0.710696387533557,GrowingModel,0.6943716670225765,-0.01632472051098055,0.05847076461769116,60042,paired output-swap permutation,2000,1.0,False
+Blood,Blood,28,AUC,BaselineModel,0.985753598122254,GrowingModel,0.969632337123477,-0.016121260998777087,1.176281554331583e-55,3421,paired DeLong approximation,,5.646151460791598e-54,True
+Blood,Blood,28,Balanced Accuracy,BaselineModel,0.9323007219834416,GrowingModel,0.9228379284057239,-0.009462793577717732,0.08195902048975512,3421,paired output-swap permutation,2000,1.0,False
+Blood,Blood,28,F1,BaselineModel,0.932207868261995,GrowingModel,0.9223281689092235,-0.009879699352771443,0.049475262368815595,3421,paired output-swap permutation,2000,1.0,False
+Blood,Blood,224,AUC,BaselineModel,0.9879438226769802,GrowingModel,0.9850150303903482,-0.0029287922866320093,1.996550612202359e-06,3421,paired DeLong approximation,,8.585167632470145e-05,True
+Blood,Blood,224,Balanced Accuracy,BaselineModel,0.9635404206040667,GrowingModel,0.953507849403882,-0.010032571200184748,0.0034982508745627187,3421,paired output-swap permutation,2000,0.12243878060969515,False
+Blood,Blood,224,F1,BaselineModel,0.9630914556943496,GrowingModel,0.9550132805493501,-0.008078175144999533,0.015492253873063468,3421,paired output-swap permutation,2000,0.495752123938031,False
+Breast,Breast,28,AUC,BaselineModel,0.8924394319131161,GrowingModel,0.8821010860484545,-0.010338345864661647,0.6622268666265477,156,paired DeLong approximation,,1.0,False
+Breast,Breast,28,Balanced Accuracy,BaselineModel,0.7744360902255639,GrowingModel,0.7951127819548872,0.020676691729323293,0.5697151424287856,156,paired output-swap permutation,2000,1.0,False
+Breast,Breast,28,F1,BaselineModel,0.7912578055307762,GrowingModel,0.8156962025316455,0.02443839700086936,0.49825087456271866,156,paired output-swap permutation,2000,1.0,False
+Breast,Breast,224,AUC,BaselineModel,0.8531746031746031,GrowingModel,0.8356307435254803,-0.01754385964912286,0.5503150868616331,156,paired DeLong approximation,,1.0,False
+Breast,Breast,224,Balanced Accuracy,BaselineModel,0.7744360902255639,GrowingModel,0.7406015037593985,-0.03383458646616544,0.37631184407796103,156,paired output-swap permutation,2000,1.0,False
+Breast,Breast,224,F1,BaselineModel,0.7912578055307762,GrowingModel,0.7478448275862069,-0.04341297794456933,0.239880059970015,156,paired output-swap permutation,2000,1.0,False
+Derma,Derma,28,AUC,BaselineModel,0.9095523162073809,GrowingModel,0.8964823787014693,-0.013069937505911566,0.008597945175870052,2005,paired DeLong approximation,,0.2837321908037117,False
+Derma,Derma,28,Balanced Accuracy,BaselineModel,0.4860981755559241,GrowingModel,0.47503300870084864,-0.01106516685507547,0.6096951524237881,2005,paired output-swap permutation,2000,1.0,False
+Derma,Derma,28,F1,BaselineModel,0.5352367076222152,GrowingModel,0.5155408956034686,-0.019695812018746595,0.392303848075962,2005,paired output-swap permutation,2000,1.0,False
+Derma,Derma,224,AUC,BaselineModel,0.8943777770130518,GrowingModel,0.886504951853591,-0.00787282515946075,0.18248025106274568,2005,paired DeLong approximation,,1.0,False
+Derma,Derma,224,Balanced Accuracy,BaselineModel,0.4661361534596156,GrowingModel,0.4728900783025936,0.0067539248429779875,0.7311344327836082,2005,paired output-swap permutation,2000,1.0,False
+Derma,Derma,224,F1,BaselineModel,0.5166986858126486,GrowingModel,0.5100726507660861,-0.006626035046562451,0.7786106946526736,2005,paired output-swap permutation,2000,1.0,False
+Path,Path,28,AUC,BaselineModel,0.9615744203331449,GrowingModel,0.9563096109257361,-0.00526480940740881,3.2726099785741268e-06,7180,paired DeLong approximation,,0.00013744961910011332,True
+Path,Path,28,Balanced Accuracy,BaselineModel,0.8122528496636634,GrowingModel,0.7995384489252697,-0.012714400738393694,0.0079960019990005,7180,paired output-swap permutation,2000,0.271864067966017,False
+Path,Path,28,F1,BaselineModel,0.8008634361267889,GrowingModel,0.7842376472545826,-0.016625788872206337,0.0024987506246876563,7180,paired output-swap permutation,2000,0.08995502248875563,False
+Path,Path,224,AUC,BaselineModel,0.9586187640580179,GrowingModel,0.9501883658768888,-0.008430398181129117,3.1465359797762885e-14,7180,paired DeLong approximation,,1.4159411908993298e-12,True
+Path,Path,224,Balanced Accuracy,BaselineModel,0.8467045485653251,GrowingModel,0.8383562465099981,-0.008348302055326995,0.05547226386806597,7180,paired output-swap permutation,2000,1.0,False
+Path,Path,224,F1,BaselineModel,0.830412527025829,GrowingModel,0.8247417410587503,-0.005670785967078706,0.22138930534732634,7180,paired output-swap permutation,2000,1.0,False
+Task Group: Blood-Derma-Path,"Blood,Derma,Path",28,AUC,BaselineModel,0.9522934448875932,GrowingModel,0.9408081089168941,-0.011485335970699007,3.5422248849214576e-11,12606,paired DeLong approximation,,1.5585789493654413e-09,True
+Task Group: Blood-Derma-Path,"Blood,Derma,Path",28,Balanced Accuracy,BaselineModel,0.7435505824010097,GrowingModel,0.7324697953439475,-0.01108078705706217,0.14592703648175911,12606,paired output-swap permutation,2000,1.0,False
+Task Group: Blood-Derma-Path,"Blood,Derma,Path",28,F1,BaselineModel,0.756102670670333,GrowingModel,0.7407022372557582,-0.015400433414574755,0.05847076461769116,12606,paired output-swap permutation,2000,1.0,False
+Task Group: Blood-Derma-Path,"Blood,Derma,Path",224,AUC,BaselineModel,0.94698012124935,GrowingModel,0.9405694493736094,-0.006410671875740626,0.0014530413953132387,12606,paired DeLong approximation,,0.05376253162658983,False
+Task Group: Blood-Derma-Path,"Blood,Derma,Path",224,Balanced Accuracy,BaselineModel,0.7587937075430023,GrowingModel,0.7549180580721578,-0.003875649470844511,0.5777111444277861,12606,paired output-swap permutation,2000,1.0,False
+Task Group: Blood-Derma-Path,"Blood,Derma,Path",224,F1,BaselineModel,0.770067556177609,GrowingModel,0.7632758907913955,-0.006791665386213563,0.3808095952023988,12606,paired output-swap permutation,2000,1.0,False
+Task Group: Breast-Tissue,"Breast,Tissue",28,AUC,BaselineModel,0.8789643450479633,GrowingModel,0.8689724315081402,-0.009991913539823094,0.39884884862754966,47436,paired DeLong approximation,,1.0,False
+Task Group: Breast-Tissue,"Breast,Tissue",28,Balanced Accuracy,BaselineModel,0.6300685701394727,GrowingModel,0.632090527094778,0.0020219569553052708,0.8875562218890555,47436,paired output-swap permutation,2000,1.0,False
+Task Group: Breast-Tissue,"Breast,Tissue",28,F1,BaselineModel,0.6386154869337393,GrowingModel,0.6430802051054092,0.004464718171669935,0.7666166916541729,47436,paired output-swap permutation,2000,1.0,False
+Task Group: Breast-Tissue,"Breast,Tissue",224,AUC,BaselineModel,0.8520536126399959,GrowingModel,0.8391314482723494,-0.012922164367646483,0.3792136715109573,47436,paired DeLong approximation,,1.0,False
+Task Group: Breast-Tissue,"Breast,Tissue",224,Balanced Accuracy,BaselineModel,0.6101283829912616,GrowingModel,0.5850641262825356,-0.02506425670872603,0.19540229885057472,47436,paired output-swap permutation,2000,1.0,False
+Task Group: Breast-Tissue,"Breast,Tissue",224,F1,BaselineModel,0.6216396345674788,GrowingModel,0.591015331369348,-0.03062430319813081,0.08845577211394302,47436,paired output-swap permutation,2000,1.0,False
+Tissue,Tissue,28,AUC,BaselineModel,0.8654892581828104,GrowingModel,0.8558437769678259,-0.009645481214984541,8.992384328852511e-23,47280,paired DeLong approximation,,4.22642063456068e-21,True
+Tissue,Tissue,28,Balanced Accuracy,BaselineModel,0.4857010500533815,GrowingModel,0.4690682722346687,-0.016632777818712807,0.0004997501249375312,47280,paired output-swap permutation,2000,0.02048975512243878,True
+Tissue,Tissue,28,F1,BaselineModel,0.4859731683367024,GrowingModel,0.47046420767917285,-0.015508960657529547,0.0004997501249375312,47280,paired output-swap permutation,2000,0.02048975512243878,True
+Tissue,Tissue,224,AUC,BaselineModel,0.8509326221053887,GrowingModel,0.8426321530192186,-0.008300469086170104,5.47323812930987e-16,47280,paired DeLong approximation,,2.5176895394825404e-14,True
+Tissue,Tissue,224,Balanced Accuracy,BaselineModel,0.44582067575695916,GrowingModel,0.42952674880567254,-0.01629392695128662,0.0004997501249375312,47280,paired output-swap permutation,2000,0.02048975512243878,True
+Tissue,Tissue,224,F1,BaselineModel,0.4520214636041814,GrowingModel,0.4341858351524891,-0.017835628451692287,0.0004997501249375312,47280,paired output-swap permutation,2000,0.02048975512243878,True
