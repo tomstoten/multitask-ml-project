@@ -5,6 +5,7 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
+<<<<<<< HEAD
 
 
 _RESULT_FILENAME = re.compile(
@@ -20,6 +21,8 @@ _COMPARISON_METRICS = (
     "F1",
 )
 
+=======
+>>>>>>> 9bcdb7af095286fe30d9d0f9108f6dcbf4925f29
 
 def plot_loss(trLoss: list, valLoss: list, title='Loss over Epochs', root='./results', model_name=None, tag: str = "") -> str:
     """
