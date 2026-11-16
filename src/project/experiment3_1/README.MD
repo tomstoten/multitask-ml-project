@@ -8,3 +8,6 @@ In a single iteration through the epoch, a batch is selected from each tasks and
 
 ### Results
 
+This looks like it is having small impacts on results, mainly by increasing baseline performance in larger image sizes and decreasing growing model performance, with some variability between datasets. It is also clear that some of the new datasets face severe mode collapse due to unbalanced output classes, in particular, Chest, Vessel, and Synapse. I will need to address this issue by adjusting the sampling algorithm to equitably train on all output classes.
+
+I want to try a couple things: first, I want to perform actual logistic regression on the backbone outputs for testing instead of using the pre-trained classifier weights to make sure we are actually getting the best fit possible from the features we have. Then, if this shows promise, I would consider doing the same for validation since what we really care about is the model's shared representation, not the actual metrics from each training run. Second, I want to change my growth operator to be something that actually does something other than creating new randomly initialized nodes.

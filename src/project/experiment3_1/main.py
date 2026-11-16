@@ -47,7 +47,7 @@ TASK_GROUPS = (
 TASK_GROUP_SIZES = ((28, 224), (28, 224), (28, 64), (28, 224))
 VOLUME_TASKS = {"Adrenal", "Fracture", "Nodule", "Organ3D", "Synapse", "Vessel"}
 MULTI_LABEL_TASKS = {"Chest"}
-TEMPORARY_TRAIN_START_INDEX = 2
+TEMPORARY_TRAIN_START_INDEX = 0
 
 
 def _batch_size_for_tasks(task_names: tuple[str, ...], size: int) -> int:
@@ -144,7 +144,7 @@ def train_model(model: torch.nn.Module,
     early_stopping_epoch = -1
     growth_patience = 20
     early_stopping_patience = max(
-        40 if hasattr(model, "grow") else 20,
+        40 if hasattr(model, "grow") else 30,
         scheduler_patience + 10,
     )
     growth_cooldown = 20
@@ -704,6 +704,12 @@ def main(train: bool = True):
         print(f"Tested {tested_count} saved model checkpoint(s).")
 
 if __name__ == "__main__":
-    main(train=True)
-    make_pretty_results()
-    stattest.main(default_results_dir=Path(__file__).resolve().parent / "results")
+    # main(train=True)
+    # make_pretty_results()
+    # stattest.main(default_results_dir=Path(__file__).resolve().parent / "results")
+    plotting.plot_experiment_comparison(
+        Path(__file__).resolve().parent,
+        [
+            Path(__file__).resolve().parents[1] / "experiment3",
+        ],
+    )
