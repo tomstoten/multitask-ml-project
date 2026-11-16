@@ -704,9 +704,9 @@ def main(train: bool = True):
         print(f"Tested {tested_count} saved model checkpoint(s).")
 
 if __name__ == "__main__":
-    # main(train=True)
-    # make_pretty_results()
-    # stattest.main(default_results_dir=Path(__file__).resolve().parent / "results")
+    main(train=True)
+    make_pretty_results()
+    stattest.main(default_results_dir=Path(__file__).resolve().parent / "results")
     plotting.plot_experiment_comparison(
         Path(__file__).resolve().parent,
         [
